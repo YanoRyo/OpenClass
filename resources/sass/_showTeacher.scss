@@ -1,0 +1,23 @@
+//＿showTeacher.blade.php & scss use the same "class, id & html" as teacher.blade.php.
+
+.showProf{
+  &__left{
+    width:500px;
+  }
+  padding: 50px;
+  display: flex;
+  &__right{
+    margin-left: 80px;
+  }
+}
+
+.showClass{
+  &__left{
+    width:500px;
+  }
+  padding: 50px;
+  display: flex;
+  &__right{
+    margin-left: 80px;
+  }
+}

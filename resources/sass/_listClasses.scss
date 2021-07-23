@@ -1,0 +1,106 @@
+@import "colorFont";
+
+.listClass{
+  height:1000px;
+  &__header{
+    height: 46px;
+    width: 100%;
+    background-color: $bg-color-2;
+    position: fixed;
+    &--table{
+      line-height: 46px;
+      height: 46px;
+      border-spacing: 0;
+      tr{
+        th{
+          font-weight: normal;
+          font-size: 16px;
+          padding: 0;
+        }
+        .class-num{
+          width: 180px;
+          height: 46px;
+          background-color: $bg-color-2;
+          text-align: center;
+        }
+        .class-name{
+          width: 180px;
+          height: 46px;
+          background-color: $bg-color-3;
+          text-align: center;
+        }
+        .class-prof{
+          width: 240px;
+          height: 46px;
+          background-color: $bg-color-2;
+          text-align: center;
+        }
+        .class-category{
+          width: 180px;
+          height: 46px;
+          background-color: $bg-color-3;
+          text-align: center;
+        }
+      }
+    }
+  }
+  &__mainTable{
+    padding-top: 46px;
+    width: 100%;
+    &__list{
+      border-spacing: 0;
+      &--each{
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        &:hover{
+          .class-num-get, .class-prof-get{
+            background-color: #EAEAEA;
+          }
+          .class-name-get, .class-category-get{
+            background-color: #d9d9d9;
+          }
+        }
+        tr{
+          td{
+            font-weight: normal;
+            font-size: 16px;
+            padding: 0;
+          }
+          .class-num-get{
+            min-width: 180px;
+            height: 40px;
+            background-color: $bg-color-2;
+            div{
+              padding:0 15px;
+            }
+          }
+          .class-name-get{
+            min-width: 180px;
+            height: 40px;
+            background-color: $bg-color-3;
+            div{
+              padding:0 15px;
+            }
+          }
+          .class-prof-get{
+            min-width: 240px;
+            height: 40px;
+            background-color: $bg-color-2;
+            div{
+              padding:0 15px;
+            }
+          }
+          .class-category-get{
+            min-width: 180px;
+            height: 40px;
+            background-color: $bg-color-3;
+            div{
+              padding:0 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

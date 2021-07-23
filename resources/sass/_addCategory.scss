@@ -1,0 +1,89 @@
+.addCategory{
+  display: flex;
+  padding: 50px;
+
+  &__display{
+    min-width: 500px;
+    max-width: 500px;
+    &--ttl{
+      display: flex;
+      height: 26px;
+      span{
+        font-size: 16px;
+        margin-left: 10px;
+        line-height: 26px;
+        height: 26px;
+
+      }
+      .categoryImg{
+        width: 26px;
+        height: 26px;
+        img{
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
+    &__box{
+      margin-top: 20px;
+      cursor: pointer;
+      &--each{
+        border: solid 3px #000;
+        border-radius: 4px;
+        display: inline-block;
+        padding: 5px;
+        margin-right: 12px;
+        margin-bottom:12px;
+        span{
+          font-size: 15px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+  &__add{
+    form{
+      margin-bottom: 40px;
+    }
+    label{
+      margin: 0px;
+    }
+    margin-left: 100px;
+    .addForm{
+      &--ttl{
+        display: inline-block;
+        font-size: 16px;
+        height: 26px;
+        line-height: 26px;    
+      }
+      &__block{
+        height: 40px;
+        display: flex;
+        margin-top: 20px;
+        &--txt{
+          height: 40px;
+          display: block;
+          input{
+            width: 330px;
+            height: 34px;
+            border: solid 3px #000;
+            border-radius: 10px;
+            padding: 0 20px;
+            box-sizing: content-box;
+          }
+        }
+        &--btn{
+          display: block;
+          margin: 7px;
+          input{
+            width: 26px;
+            height: 26px;
+            line-height: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@import "userHint";

@@ -1,0 +1,206 @@
+@import "colorFont";
+
+.pulledTmp__txtType{
+  margin-bottom: 26px;
+  &__ttl{
+    height: 26px;
+    line-height: 26px;;
+    label{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 45px;
+    }
+  }
+  &__output{
+    display: flex;
+    height: 50px;
+    span{
+      cursor: default;
+      margin-left: 15px;
+      line-height: 50px;
+    }
+    .bold{
+      font-weight: bold;
+    }
+    &--img{
+      height: 50px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+  }
+}
+
+
+
+
+.pulledTmp__img{
+  margin-bottom: 26px;
+  &__ttl{
+    cursor: default;
+    height: 26px;
+    line-height: 26px;
+    label{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 45px;
+    }
+  }
+  &__show{
+    display: flex;
+    &--img{
+      height: 50px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+    input{
+      margin-left: 10px;
+    }
+    &__data{
+      margin-left: 15px;
+      width: 300px;
+      height: auto;
+      margin-top: 12px;
+      img{
+        width: 300px;
+        height: auto;
+      }
+    }
+  }
+}
+
+
+
+
+.pulledTmp__cat{
+  margin-bottom: 26px;
+  &__ttl{
+    cursor: default;
+    height: 26px;
+    line-height: 26px;
+    span{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 45px;
+    }
+  }
+  &__checkBox{
+    display: flex;
+    &--img{
+      height: 50px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+    &--btn{
+      margin-left: 10px;
+      &--each{
+        display: inline-block;
+        margin: 5px;
+        border: 2px solid #BCE0FD;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 5px;
+        border-radius: 5px;
+        span{
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+
+
+.pulledTmp__subj{
+  margin-bottom: 26px;
+  &__ttl{
+    cursor: default;
+    height: 26px;
+    line-height: 26px;
+    span{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 45px;
+    }
+  }
+  &__lists{
+    display: flex;
+    &--img{
+      height: 50px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+    &--list{
+      margin-left: 15px;
+      li::marker{
+        margin: 0;
+      }
+      &--each{
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        margin-bottom: -10px;
+        span{
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+
+.pulledTmp__rate{
+  margin-bottom: 26px;
+  &__ttl{
+    height: 26px;
+    line-height: 26px;;
+    cursor: default;
+    span{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 45px;
+    }
+  }
+  &__value{
+    display: flex;
+    height: 50px;
+    span{
+      cursor: default;
+      margin-left: 15px;
+      line-height: 50px;
+      font-weight: bold;
+    }
+    &--img{
+      height: 26px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+  }
+  &__chart{
+    margin-top: 36px;
+    padding: 10px;
+    background-color: #EDEDED;
+    width: 343px;
+    height:246px;
+    border-radius: 20px;
+  }
+}

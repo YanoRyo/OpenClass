@@ -1,0 +1,31 @@
+.user__hint{
+  &--ttl{
+    display: flex;
+    height: 26px;
+    span{
+      font-size: 12px;
+      margin-left: 10px;
+      height: 26px;
+      line-height: 26px;
+    }
+    .hintImg{
+      width: 18px;
+      height: 18px;
+      img{
+        width: 18px;
+        height: 18px;
+        margin: 4px 0;
+      }
+    }
+  }
+  &--msg{
+    ul{
+      margin: 20px 0;
+      padding-left: 20px;
+      li{
+        margin-bottom: 40px;
+        font-size: 14px;
+      }
+    }
+  }
+}

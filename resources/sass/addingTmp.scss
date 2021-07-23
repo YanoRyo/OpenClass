@@ -1,0 +1,149 @@
+@import "colorFont";
+
+.formTmp__txtType{
+  margin-bottom: 26px;
+  &__ttl{
+    margin-bottom: 10px;
+    height: 26px;
+    line-height: 26px;;
+    label{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 60px;
+    }
+  }
+  &__input{
+    display: flex;
+    height: 50px;
+    &--img{
+      height: 26px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+    input{
+      margin-left: 13px;
+      width: 330px;
+      height: 48px;
+      border: solid 1px #000;
+      border-radius: 18px;
+      padding: 0 20px;
+      box-sizing: content-box;
+      background-color: $bg-color-2;
+      font-size: 16px;
+    }
+    input:focus{
+      outline: none;
+      border-radius: 18px;
+      background-color: #FFF;
+    }
+  }
+}
+
+
+
+
+.formTmp__img{
+  margin-bottom: 26px;
+  &__ttl{
+    margin-bottom: 10px;
+    height: 26px;
+    line-height: 26px;
+    label{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 60px;
+    }
+  }
+  &__up{
+    display: flex;
+    &--img{
+      height: 50px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+    input{
+      margin-left: 10px;
+    }
+    #profImg-preview{
+      width: 300px;
+      height: auto;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+
+
+.formTmp__cat{
+  margin-bottom: 26px;
+  &__ttl{
+    margin-bottom: 10px;
+    height: 26px;
+    line-height: 26px;
+    span{
+      font-size: 16px;
+      line-height: 26px;
+      margin-left: 60px;
+      cursor: default;
+    }
+  }
+  &__checkBox{
+    display: flex;
+    &--img{
+      height: 50px;
+      width: 26px;
+      img{
+        height: 26px;
+        width: 26px;
+        margin: 12px 0;
+      }
+    }
+    &--btn{
+      margin-left: 10px;
+      &--each{
+        display: inline-block;
+        input[type="checkbox"]{
+          display: none;
+        }
+        input[type=checkbox]:checked + label{
+          background-color: $bg-color-4;
+        }
+        label{
+          cursor: pointer;
+          margin: 5px;
+          border: 2px solid $bg-color-3;
+          display: block;
+          height: 40px;
+          line-height: 40px;
+          padding: 0 5px;
+          border-radius: 5px;
+        }
+        label:hover{
+          background-color: $bg-color-3;
+        }
+      }
+    }
+  }
+}
+
+
+.formTmp__submit--btn{
+  height: 48px;
+  width: auto;
+  input{
+    height: 48px;
+    width: auto;
+    font-size: 14px;
+    line-height: 48px;
+    padding: 0 30px;
+  }
+}
