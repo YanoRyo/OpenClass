@@ -20,9 +20,9 @@ class ClassController extends Controller
     {
         //
         $categories = Category::all();
-        $teachers = Teacher::all();
+        $teacheies = Teacher::all();
         // dd($teachers);
-        return view('class',compact('categories','teachers'));
+        return view('class',compact('categories','teacheies'));
     }
 
     /**
@@ -44,11 +44,12 @@ class ClassController extends Controller
     public function store3(Request $request)
     {
         //
+        
         $class = new Lesson;
         $class->class_name = $request->class_name;
         $class->class_num = $request->class_num;
         $array = $request->category;
-        $class->category = implode( ',', $array);
+        $class->category = implode(',', $array);
         $class->teacher_id = $request->teacher_id;
         $class->save();
         
@@ -69,18 +70,15 @@ class ClassController extends Controller
         $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
                     ->get();
         
-        $class = $classes->where('id',$id);
-        // dd($class);
-        
+        $classes = $classes->where('id',$id);
         foreach($classes as $class){
             $categorys = $class->category;
             $categories = explode(",", $categorys);
-           
         }
-        dd($class);
+       
         
         
-        return view('show_class',compact('class','categories'));
+        return view('show_class',compact('classes','categories'));
     }
 
     /**
@@ -95,7 +93,7 @@ class ClassController extends Controller
         $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
                     ->get();
         
-        $class = $classes->where('id',$id);
+        $classes = $classes->where('id',$id);
         foreach($classes as $class){
             $categorys = $class->category;
             $categories = explode(",", $categorys);
@@ -104,7 +102,7 @@ class ClassController extends Controller
         $all_categories = Category::all();
         $all_teacheies = Teacher::all();
         
-        return view('class_update',compact('class','categories','all_categories','all_teacheies'));
+        return view('class_update',compact('classes','categories','all_categories','all_teacheies'));
     }
 
     /**
@@ -114,17 +112,18 @@ class ClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update02(Request $request, $id)
     {
         //
-        $class = Lesson::find($request->id);
+        // dd($request);
+        $class = Lesson::find($id);
         $class->class_name = $request->class_name;
         $class->class_num = $request->class_num;
         $array = $request->category;
         $class->category = implode( ',', $array);
         $class->teacher_id = $request->teacher_id;
         $class->save();
-        return view('class_update',compact('class','categories'));
+        return redirect('class');
     }
 
     /**
@@ -151,5 +150,65 @@ class ClassController extends Controller
         
         
         return view('list_classes',compact('classes'));
+    }
+    
+    public function class_archive(Request $request)
+    {
+        
+      
+        
+        $class = Lesson::find($request->id);
+        
+        // dd($class);
+        $archive_num = "1";
+        $class->archive_class = $archive_num;
+        $class->save();
+        
+        return redirect('list_classes_archive');
+    }
+    
+    public function show_archive()
+    {
+        
+        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+                    ->get();
+        
+        return view('list_classes_archive',compact('classes'));
+    }
+    
+    public function show_class_archive($id)
+    {
+        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+                    ->get();
+        
+        $classes = $classes->where('id',$id);
+        foreach($classes as $class){
+            $categorys = $class->category;
+            $categories = explode(",", $categorys);
+        }
+       
+        
+        
+        return view('show_class_archive',compact('classes','categories'));
+        
+    }
+    
+    
+    public function archive_cancel(Request $request)
+    {
+        
+        $class = Lesson::find($request->id);
+        
+        $archive_flag = $class->archive_class;
+        
+        if ($archive_flag != null){
+            $class->archive_class = null;
+            $class->save();
+        }
+        
+        // dd($class);
+        
+        return redirect('list_classes_archive');
+        
     }
 }

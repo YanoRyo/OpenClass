@@ -53,7 +53,7 @@
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
             <div class="formTmp__cat__checkBox--btn">
-              @foreach($categorys as $category)
+              @foreach($categories as $category)
               <div class="formTmp__cat__checkBox--btn--each">
                 <input type="checkbox" id="{{$category->id}}" name="teacher_category[]" value="{{$category->category}}">
                 <label for="{{$category->id}}">{{$category->category}}</label>

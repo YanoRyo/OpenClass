@@ -1,9 +1,14 @@
 @extends('layouts.template')
 
 @section('content')
+@foreach($classes as $class)
   <div class="addClass">
     <div class="addClass__form">
-      <form method='POST' action="{{ route('update') }}" enctype="multipart/form-data" id="addClass_form">
+      <?php
+        $last_url = url()->current();
+        $id = substr($last_url, strrpos($last_url, '/') + 1);
+      ?>
+      <form method='POST' action="{{ route('update02',['id' => $id]) }}" enctype="multipart/form-data" id="addClass_form">
         @csrf
         <div class="formTmp__txtType">
           <div class="formTmp__txtType__ttl">
@@ -13,7 +18,7 @@
             <div class="formTmp__txtType__input--img">
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
-            <input type="text" name="class_name" id="class-name" value="{{$class->class_name}}">
+            <input type="text" name="class_name" id="class-name" value="{{old('class_name',$class->class_name)}}">
           </div>
         </div>
 
@@ -25,7 +30,7 @@
             <div class="formTmp__txtType__input--img">
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
-            <input type="text" name="class_num" id="class-num" value="{{$class->class_num}}">
+            <input type="text" name="class_num" id="class-num" value="{{old('class_num',$class->class_num)}}">
           </div>
         </div>
         
@@ -40,10 +45,10 @@
             
             <div class="formTmp__cat__checkBox--btn">
              @foreach($categories as $category)
-            <div class="pulledTmp__cat__checkBox--btn--each">
-              <span>{{$category}}</span>
-            </div>
-            @endforeach
+                <div class="pulledTmp__cat__checkBox--btn--each">
+                  <span>{{$category}}</span>
+                </div>
+             @endforeach
             </div>
           </div>
         </div>
@@ -75,7 +80,6 @@
             <div class="formTmp__txtType__input--img">
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
-            <input type="text" id="teacher-name" name="teacher_name" list="example" value="{{$class->name}}">
             <datalist id="example">
             </datalist>
           </div>
@@ -118,14 +122,13 @@
         </div>
       </div>
       <div class="formTmp__submit--btn">
-        <input type="submit" name="submit" value="登録する" form="addClass_form">
+        <input type="submit" name="submit" value="再登録する" form="addClass_form">
       </div>
     </div><!--addClass__submit-->
     <div>
-      </form>
     </div>
   </div><!--addClass-->
-
+@endforeach
 @endsection
 
 

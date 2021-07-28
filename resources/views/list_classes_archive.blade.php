@@ -16,9 +16,9 @@
     <div class="listClass__mainTable">
       <table class="listClass__mainTable__list">
         <!--@foreach($classes as $class)-->
-        @if ($class->archive_class == null)
+        @if ($class->archive_class == "1")
           <tbody class="listClass__mainTable__list--each">
-            <tr class="list-href" data-href="{{ route('show_class',['id' => $class->id])}}">
+            <tr class="list-href" data-href="{{ route('show_class_archive',['id' => $class->id])}}">
               <td class="class-num-get">
                 <div>
                   @if ($class->class_num == null)
@@ -57,8 +57,8 @@
               </td>
             </tr>
           </tbody>
-        
         @endif
+        
         <!--@endforeach-->
       </table>
     </div>

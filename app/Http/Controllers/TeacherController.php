@@ -12,11 +12,13 @@ class TeacherController extends Controller
 {
     //
     public function index(){
-    	$categorys = Category::all();
-    	return view('teacher',compact('categorys'));
+    	$categories = Category::all();
+    	return view('teacher',compact('categories'));
     }
     
     public function store2(Request $request){
+        
+        
         
 
         //バリデーション（入力値チェック）
@@ -63,19 +65,119 @@ class TeacherController extends Controller
         return view('show_teacher',compact('show_teacher','teacheies_category','teacher_classes'));
     }
     
+
+    
+    public function edit($id){
+        
+        $show_teacher = Teacher::find($id);
+        $categorys = $show_teacher->teacher_category;
+        $teacheies_category = explode(",", $categorys);
+        $teacher_id = $show_teacher->id;
+        $teacher_classes= Lesson::where('teacher_id',$teacher_id)->get();
+        $all_categories = Category::all();
+        
+        return view('teacher_update',compact('show_teacher','teacheies_category','teacher_classes','all_categories'));
+    }
+    
+    public function update01(Request $request,$id){
+        
+        
+        
+        $validator = Validator::make($request->all() , ['name' => 'required|max:255', 'image' => 'required','email' => 'required|max:255']);
+
+        //バリデーションの結果がエラーの場合
+        if ($validator->fails()){
+            
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+        $teacher = Teacher::find($request->id);
+        
+        $upload_image = $request->file('image');
+        
+        if($upload_image) {
+			//アップロードされた画像を保存する
+			$path = $upload_image->store('public');
+			//画像の保存に成功したらDBに記録する
+			if($path){
+				$teacher->image = $upload_image->storeAs('/storage/teacher_images', $request->name . '.jpg');
+			}
+		}
+       
+  
+        $teacher->name = $request->name;
+        $teacher->email = $request->email;
+        $array = $request->category;
+        $teacher->teacher_category = implode(',', $array);
+        $teacher->save();
+        $request->image->storeAs('public/teacher_images', $request->name . '.jpg');
+        
+        
+        
+        return redirect('list_teachers');
+        
+    }
+    
+    public function destroy(Request $request){
+        
+        
+        $teacher = Teacher::find($request->id);
+        $teacher->delete();
+        
+        return redirect('list_teachers');
+    }
+    
     public function show_list(){
         
         $teachers = Teacher::all();
     
-        
         return view('list_teachers',compact('teachers'));
     }
     
-    public function update($id){
+    public function teacher_archive(Request $request)
+    {
         
+        $teacher = Teacher::find($request->id);
         
+        $archive_num = "1";
+        $teacher->archive_teacher = $archive_num;
         
-        return view('teacher_update');
+        $teacher->save();
         
+        return redirect('list_teachers_archive');
+    }
+    
+    
+    public function show_archive()
+    {
+        
+        $teachers = Teacher::all();
+        
+        return view('list_teachers_archive',compact('teachers'));
+    }
+    
+    
+    public function show_teacher_archive($id)
+    {
+        $show_teacher = Teacher::find($id);
+        $categorys = $show_teacher->teacher_category;
+        $teacheies_category = explode(",", $categorys);
+        $teacher_id = $show_teacher->id;
+        $teacher_classes= Lesson::where('teacher_id',$teacher_id)->get();
+        return view('show_teacher_archive',compact('show_teacher','teacheies_category','teacher_classes'));
+        
+    }
+    
+    public function archive_cancel(Request $request)
+    {
+        
+        $teacher = Teacher::find($request->id);
+        
+        $archive_flag = $teacher->archive_teacher;
+        
+        if ($archive_flag != null){
+            $teacher->archive_teacher = null;
+            $teacher->save();
+        }
+        return redirect('list_teachers_archive');
     }
 }

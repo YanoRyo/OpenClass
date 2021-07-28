@@ -3,7 +3,11 @@
 @section('content')
   <div class="addProf">
     <div class="addProf__add">
-      
+      <?php
+        $last_url = url()->current();
+        $id = substr($last_url, strrpos($last_url, '/') + 1);
+      ?>
+      <form method='POST' action="{{ route('update01',['id' => $id]) }}" enctype="multipart/form-data" id="addProf_form">
         @csrf
         <div class="formTmp__txtType">
           <div class="formTmp__txtType__ttl">
@@ -13,7 +17,7 @@
             <div class="formTmp__txtType__input--img">
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
-            <input type="text" name="category" id="professor" value="＜取得したnameを代入＞"><!--idを変更-->
+            <input type="text" name="name" id="professor" value="{{$show_teacher->name}}"><!--idを変更-->
           </div>
         </div><!--formTmp__txtType__ttl(professor)-->
 
@@ -26,6 +30,7 @@
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
             <div>
+              <img src="{{ asset($show_teacher->image) }}" width="300" height="300" style ="border-radius:50%" alt="">
               <img id="profImg-preview" width="300px" height="auto">
               <input type="file" name="image" accept="image/jpeg,image/gif,image/png" id="teacher_img">
             </div>
@@ -40,7 +45,7 @@
             <div class="formTmp__txtType__input--img">
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
-            <input type="email" name="email" id="email" value="＜取得したemailを代入＞"><!--idを変更-->
+            <input type="email" name="email" id="email" value="{{$show_teacher->email}}"><!--idを変更-->
           </div>
         </div><!--formTmp__txtType(email)-->
 
@@ -53,10 +58,33 @@
               <img src="/images/gNav__listLogo.png" alt="">
             </div>
             <div class="formTmp__cat__checkBox--btn">
-              
+              @foreach($teacheies_category as $teacher_category)
+                <div class="pulledTmp__cat__checkBox--btn--each">
+                  <span>{{$teacher_category}}</span>
+                </div>
+              @endforeach
             </div>
           </div>
         </div><!--formTmp__cat(category)-->
+        <div class="formTmp__cat">
+          <div class="formTmp__cat__ttl">
+            <span>カテゴリー</span>
+          </div>
+          <div class="formTmp__cat__checkBox">
+            <div class="formTmp__cat__checkBox--img">
+              <img src="/images/gNav__listLogo.png" alt="">
+            </div>
+            
+            <div class="formTmp__cat__checkBox--btn">
+              @foreach($all_categories as $category)
+                <div class="formTmp__cat__checkBox--btn--each">
+                  <input type="checkbox" id="{{$category->id}}" name="category[]" value="{{$category->category}}">
+                  <label for="{{$category->id}}">{{$category->category}}</label>
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
       </form>
       
     </div><!--addProf__add-->
@@ -82,7 +110,7 @@
         </div>
       </div>
       <div class="formTmp__submit--btn">
-        <input type="submit" name="submit" value="登録する" form="addProf_form">
+        <input type="submit" name="submit" value="再登録する" form="addProf_form">
       </div>
     </div><!--addsubmit-->
   </div><!--addProf-->

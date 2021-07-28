@@ -61,7 +61,7 @@
             
             <input type="text" list="teacherList" id="teacher-name"  placeholder="教員を選択" spellcheck=”false”>
             <datalist id="teacherList">
-            @foreach($teachers as $teacher)
+            @foreach($teacheies as $teacher)
               <option data-value="{{$teacher->id}}">{{$teacher->name}}</option>
             @endforeach
             </datalist>
