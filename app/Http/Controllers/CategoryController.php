@@ -10,8 +10,8 @@ class CategoryController extends Controller
 	
     //
     public function index(){
-    	$categorys = Category::all();
-    	return view('category',compact('categorys'));
+    	$categories = Category::all();
+    	return view('V2category',compact('categories'));
     }
     
     
@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $last_insert_id = $category->id;
 
 
-        return redirect('category');
+        return redirect('V2category');
     }
     
 }

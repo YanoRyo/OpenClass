@@ -8,13 +8,13 @@
 @import '~bootstrap/scss/bootstrap';
 
 //template
-@import 'template';
+//@import 'template';
 
 //color&font
-@import 'colorFont';
+//@import 'colorFont';
 
 //add_category
-@import 'addCategory';
+//@import 'addCategory';
 
 @import "addingTmp";
 
@@ -33,3 +33,11 @@
 @import "class";
 
 @import "optionBtn";
+
+
+// ▼openclassV2 
+@import "V2template";
+@import "V2colorFont";
+@import "V2category";
+@import "V2userHint";
+@import "V2management";

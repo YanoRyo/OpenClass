@@ -21,8 +21,22 @@ class ClassController extends Controller
         //
         $categories = Category::all();
         $teacheies = Teacher::all();
-        // dd($teachers);
-        return view('class',compact('categories','teacheies'));
+        
+        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+                    ->get();
+                    
+        
+        // $classes = $classes->where('id',$id);
+        // foreach($classes as $class){
+        //     $class_id = $class->id;
+        //     $classes = $class->where('id',$class_id);
+        //     dd($class_id);
+        //     $categorys = $classes->category;
+        //     $categories = explode(",", $categorys);
+        // }
+        // dd($categories);
+        
+        return view('V2class',compact('categories','teacheies','classes'));
     }
 
     /**
@@ -44,7 +58,7 @@ class ClassController extends Controller
     public function store3(Request $request)
     {
         //
-        
+        // dd($request);
         $class = new Lesson;
         $class->class_name = $request->class_name;
         $class->class_num = $request->class_num;
@@ -53,7 +67,7 @@ class ClassController extends Controller
         $class->teacher_id = $request->teacher_id;
         $class->save();
         
-        return redirect('class');
+        return redirect('V2class');
         
     }
 
@@ -90,6 +104,7 @@ class ClassController extends Controller
     public function edit($id)
     {
         //
+        
         $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
                     ->get();
         
@@ -98,11 +113,11 @@ class ClassController extends Controller
             $categorys = $class->category;
             $categories = explode(",", $categorys);
         }
-        
+      
         $all_categories = Category::all();
         $all_teacheies = Teacher::all();
         
-        return view('class_update',compact('classes','categories','all_categories','all_teacheies'));
+        return view('V2updateClass',compact('classes','categories','all_categories','all_teacheies'));
     }
 
     /**
@@ -123,7 +138,7 @@ class ClassController extends Controller
         $class->category = implode( ',', $array);
         $class->teacher_id = $request->teacher_id;
         $class->save();
-        return redirect('class');
+        return redirect('V2class');
     }
 
     /**
@@ -139,7 +154,7 @@ class ClassController extends Controller
         $class = Lesson::find($request->id);
         $class->delete();
         
-        return redirect('list_classes');
+        return redirect('V2class');
     }
     
     public function show_list()
@@ -164,7 +179,7 @@ class ClassController extends Controller
         $class->archive_class = $archive_num;
         $class->save();
         
-        return redirect('list_classes_archive');
+        return redirect('V2class');
     }
     
     public function show_archive()
@@ -173,7 +188,7 @@ class ClassController extends Controller
         $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
                     ->get();
         
-        return view('list_classes_archive',compact('classes'));
+        return view('V2archiveClass',compact('classes'));
     }
     
     public function show_class_archive($id)
@@ -208,7 +223,7 @@ class ClassController extends Controller
         
         // dd($class);
         
-        return redirect('list_classes_archive');
+        return redirect('V2archiveClass');
         
     }
 }

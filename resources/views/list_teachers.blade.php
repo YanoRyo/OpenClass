@@ -16,7 +16,7 @@
     </div>
     <div class="listProf__mainTable">
       <table class="listProf__mainTable__list">
-        @foreach($teachers as $teacher)
+        @foreach($teacheies as $teacher)
         @if ($teacher->archive_teacher == null)
           <tbody class="listProf__mainTable__list--each">
             <tr class="list-href" data-href="{{ route('show_teacher',['id' => $teacher->id])}}">

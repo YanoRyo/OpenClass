@@ -13,7 +13,9 @@ class TeacherController extends Controller
     //
     public function index(){
     	$categories = Category::all();
-    	return view('teacher',compact('categories'));
+    	$teacheies = Teacher::all();
+    	
+    	return view('V2teacher',compact('categories','teacheies'));
     }
     
     public function store2(Request $request){
@@ -51,7 +53,7 @@ class TeacherController extends Controller
         $request->image->storeAs('public/teacher_images', $request->name . '.jpg');
         
 
-        return redirect('teacher');
+        return redirect('V2teacher');
 
     }
     
@@ -76,14 +78,14 @@ class TeacherController extends Controller
         $teacher_classes= Lesson::where('teacher_id',$teacher_id)->get();
         $all_categories = Category::all();
         
-        return view('teacher_update',compact('show_teacher','teacheies_category','teacher_classes','all_categories'));
+        return view('V2updateTeacher',compact('show_teacher','teacheies_category','teacher_classes','all_categories'));
     }
     
     public function update01(Request $request,$id){
         
         
-        
-        $validator = Validator::make($request->all() , ['name' => 'required|max:255', 'image' => 'required','email' => 'required|max:255']);
+       
+        $validator = Validator::make($request->all() , ['name' => 'required|max:255', 'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048','email' => 'required|max:255']);
 
         //バリデーションの結果がエラーの場合
         if ($validator->fails()){
@@ -113,7 +115,7 @@ class TeacherController extends Controller
         
         
         
-        return redirect('list_teachers');
+        return redirect('V2teacher');
         
     }
     
@@ -123,7 +125,7 @@ class TeacherController extends Controller
         $teacher = Teacher::find($request->id);
         $teacher->delete();
         
-        return redirect('list_teachers');
+        return redirect('V2teacher');
     }
     
     public function show_list(){
@@ -143,7 +145,7 @@ class TeacherController extends Controller
         
         $teacher->save();
         
-        return redirect('list_teachers_archive');
+        return redirect('V2teacher');
     }
     
     
@@ -152,7 +154,7 @@ class TeacherController extends Controller
         
         $teachers = Teacher::all();
         
-        return view('list_teachers_archive',compact('teachers'));
+        return view('V2archiveTeacher',compact('teachers'));
     }
     
     
@@ -178,6 +180,6 @@ class TeacherController extends Controller
             $teacher->archive_teacher = null;
             $teacher->save();
         }
-        return redirect('list_teachers_archive');
+        return redirect('V2archiveTeacher');
     }
 }
