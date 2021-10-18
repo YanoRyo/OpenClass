@@ -7,34 +7,44 @@
         <form method='POST' action="{{ route('store1') }}" enctype="multipart/form-data" class="addCategory__form" autocomplete="off"><!--name：JQueryでsubmitするのに必要-->
          @csrf
            <div class="addCategory__form--input">
-             <input type="text" name="category" id="teacher_img" placeholder="Enter Categories">
+             <input type="text" name="category" id="new-category-input" placeholder="Enter Categories">
            </div>
-           <button class="addCategory__form--submit"><!--buttonタグ：JQueryでsubmitするのに必要-->
-             <div class="actionBtn--blue--category">
+           <button class="addCategory__form--submit" disabled><!--buttonタグ：JQueryでsubmitするのに必要-->
+             <div id="actionBtn--blue--category" class="actionBtn--blue--category--disabled">
                <div class="actionBtn--blue--category--logo">
                  <img src="/images/Add-w-logo.png" alt="">
                </div>
              </div>
            </button>
         </form>
+        <div class="attention-message">
+        </div>
+        @if(isset($alert_category))
+          <p style="color:red;">{{$alert_category}}</p>
+        @endif
         <div class="addCategory__added">
           <div class="addCategory__added--category">
+          <form method='POST' action="/V2category/destroy" id="added-category-form">
+              @csrf
            @foreach($categories as $category)
            <div class="category-btn-selectbox">
-             <input type="checkbox" id="{{$category->id}}" name="category" value="{{$category->category}}">
+             <input type="checkbox" id="{{$category->id}}" name="category[]" value="{{$category->id}}">
              <label for="{{$category->id}}">{{$category->category}}</label>
+             <data value="{{$category->category}}"></data>
            </div>
            @endforeach
+          </form>
           </div>
           <div class="addCategory__added--delete">
-            <button class="delete__btn--category">
+            <label class="delete__btn--category" for="delete-submit">
               <div class="delete__btn--category--logo">
                 <img src="/images/delet-w.png" alt="trash">
               </div>
               <div class="delete__btn--category--txt">
                <span class="btn-span">Select categories and delete.</span>
               </div>
-           </button>
+              <input type="submit" id="delete-submit" value="delete" form="added-category-form" disabled>
+            </label>
           </div>
         </div>
       </div>
@@ -58,5 +68,23 @@
 
       </div>
     </div>
-    
+                <!--<h4>CSVファイルを選択してください</h4>-->
+                <!--<div class="row">-->
+                <!--    <div class="col-md-6">-->
+                <!--    ■手順-->
+ 
+                <!--    1. CSVで保存します。-->
+ 
+                <!--    2. ファイルを選択し読み込んでください。-->
+ 
+                <!--    </div>-->
+                <!--</div>-->
+                
+                <!--<form role="form" method="post" action="import" enctype="multipart/form-data">-->
+                <!--    {{ csrf_field() }}-->
+                <!--    <input type="file" name="csv_file" id="csv_file">-->
+                <!--    <div class="form-group">-->
+                <!--        <button type="submit" class="btn btn-default btn-success">保存</button>-->
+                <!--    </div>-->
+                <!--</form>-->
 @endsection

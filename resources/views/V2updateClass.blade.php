@@ -21,6 +21,15 @@
         ?>
         <div class="updateForm__wrapper">
         <div class="updateForm__left"><!-- 左側 -->
+        @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+        @endif
           <form method='POST' action="{{ route('update02',['id' => $id]) }}" id="updateForm__edit" class="updateForm__edit" enctype="multipart/form-data">
             @csrf
             <div class="updateForm__edit--flex">
@@ -48,7 +57,7 @@
               <div class="updateForm__edit--tmp--category">
                 <div class="category-btn-selectbox">
                   @foreach($all_categories as $category)
-                    <div class="formTmp__cat__checkBox--btn--each">
+                    <div class="formTmp__cat__checkBox--btn--each category-btn-selectbox">
                       <input type="checkbox" id="{{$category->id}}" name="category[]" value="{{$category->category}}">
                       <label for="{{$category->id}}">{{$category->category}}</label>
                     </div>

@@ -11,32 +11,32 @@
           <div class="addNewForm__head__space">
           </div>
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <div class="addNewForm__wrapper">
           <div class="addNewForm__left"><!-- 左側 -->
+          <!--@if ($errors->any())-->
+          <!--      <div class="alert alert-danger">-->
+          <!--          <ul>-->
+          <!--              @foreach ($errors->all() as $error)-->
+          <!--                  <li>{{ $error }}</li>-->
+          <!--              @endforeach-->
+          <!--          </ul>-->
+          <!--      </div>-->
+          <!--  @endif-->
           <form class="upload-images p-0 border-0" method='POST' action="{{ route('store2') }}" enctype="multipart/form-data" id="addProf_form">
             @csrf
             <div class="addNewForm__edit--flex">
-              <div class="addNewForm__edit--tmp addNewForm__edit--flex--left">
-                <label for="classID">Professor ID</label>
-                <input class="addNewForm__edit--input" type="text" id="classID" placeholder="Add Prof ID.">
+              <div class="addNewForm__edit--tmp addNewForm__edit--flex--left" id="prof-ID-js">
+                <label for="classID">Professor ID  <span class="form-required">*必須</span></label>
+                <input class="addNewForm__edit--input addNewForm__edit--input--ID" type="text" id="classID" placeholder="Add Prof ID.">
               </div>
-              <div class="addNewForm__edit--tmp addNewForm__edit--flex--right">
-              <label for="subject">Professor name</label>
+              <div class="addNewForm__edit--tmp addNewForm__edit--flex--right" id="prof-Name-js">
+                <label for="subject">Professor name  <span class="form-required">*必須</span></label>
                 <input class="addNewForm__edit--input" type="text" name="name" id="subject" placeholder="Add new Proffessor name.">
               </div>
             </div>
-            <div class="addNewForm__edit--tmp addNewForm__edit--flex--right">
-              <label for="subject">Mail</label>
-              <input class="addNewForm__edit--input" type="text" name="email" id="subject" placeholder="Add new Mail adress.">
+            <div class="addNewForm__edit--tmp addNewForm__edit--flex--right" id="prof-Email-js">
+              <label for="email">Mail  <span class="form-required">*必須</span></label>
+              <input class="addNewForm__edit--input addNewForm__edit--input--email" type="email" name="email" id="email" placeholder="Add new Mail adress.">
             </div>
             <div class="addNewForm__edit--tmp addNewForm__edit--flex--right">
               <label for="prof-image">Image</label>
@@ -45,8 +45,8 @@
               <label for="prof-image" class="edit-uploadImg-btn">Upload image</label>
             </div>
             <div class="addNewForm__edit--tmp">
-              <label for="">Categories</label>
-              <div class="addNewForm__edit--tmp--category">
+              <label for="">Categories  <span class="form-required">*必須</span></label>
+              <div class="addNewForm__edit--tmp--category" id="prof-Category-js">
                 @foreach($categories as $category)
                   <div class="category-btn-selectbox">
                     <input type="checkbox" id="{{$category->id}}" name="teacher_category[]" value="{{$category->category}}">
@@ -55,6 +55,7 @@
                 @endforeach
               </div>
             </div>
+            
           </form>
           </div>
           <div class="addNewForm__right"><!-- 右側 -->
@@ -78,7 +79,7 @@
                 <button class="addNewForm__submit--btn--cancel">Cancel</button>
               </div>
               <div class="addNewForm__submit--btn">
-                <input type="submit" name="submit" form="addProf_form" value="Submit">
+                <input type="submit" name="submit" form="addProf_form" value="Submit" id="addProf_submit" disabled>
               </div>
             </div>
           </div>

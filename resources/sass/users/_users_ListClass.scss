@@ -1,0 +1,82 @@
+.StdList_tmp{
+  display: grid;
+  grid-template: 
+  ". . ."30px
+    "categoryList mainList ranking" 1fr
+    / 200px calc(100% - 450px) 250px;
+}
+
+.categoryList{
+  grid-area: categoryList;
+  width: 200px;
+  z-index: 10;
+  &__ttl{
+    text-align: center;
+    background: rgb(2,0,36);
+background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,1) 100%);
+    span{
+      font-size: 15px;
+    }
+  }
+
+  &__list{
+    height: calc(100vh - 106px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    &--each{
+      border-radius: 15px;
+      padding: 6px 10px;
+      cursor: pointer;
+      span{
+        box-sizing: border-box;
+        display: block;
+        width: 145px;
+        height: 29px;
+        border: solid 2px #707070;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 29px;
+        transition: .2s;
+      }
+      &--lastSpace{
+        height: 100px;
+      }
+    }
+  }
+}
+
+.mainList{
+  grid-area: mainList;
+  overflow-y: scroll;
+  height: calc(100vh - 82px);
+  &__each{
+    &--categoryName{
+      margin-bottom: 10px;
+      span{
+        font-size: 15px;
+        cursor: default;
+        font-weight: bold;
+      }
+    }
+    &--sbjProfCard{
+      display: flex;
+      padding: 5px 0 30px 0;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+    }
+  }
+}
+
+.ListRanking{
+  z-index: 10;
+  grid-area: ranking;
+  background-color: $bg-color-2;
+}
+

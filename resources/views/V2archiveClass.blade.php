@@ -116,7 +116,7 @@
                   <div class="list-detail-ttl">
                     <span>Category</span>
                   </div>
-                  <div class="list-detail-show">
+                  <div class="list-detail-show list-detail-show-category">
                     
                     
                     <span class="category-span">{{$class->category}}</span>

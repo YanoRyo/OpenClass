@@ -140,7 +140,7 @@
                   <div class="list-detail-ttl">
                     <span>Category</span>
                   </div>
-                  <div class="list-detail-show">
+                  <div class="list-detail-show list-detail-show-category">
                     <!--foreach-->
                         <span class="category-span">{{$teacher->teacher_category}}</span>
                     <!--endforeach-->

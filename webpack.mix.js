@@ -12,10 +12,15 @@ const mix = require('laravel-mix');
  */
 
 
-mix.js([
+mix
+    .js([
         'resources/js/app.js',
-        'resources/js/assets/test_jquery.js',
+        // 'resources/js/assets/test_jquery.js',
+        'resources/js/assets/Uusers/users.js',
+        'resources/js/assets/organization/org.js',
         'resources/js/assets/chart.js',
     ], 'public/js/app.js')
-    .scripts('resources/js/assets/test_vanilla.js','public/js/test_vanilla.js')
-    .sass('resources/sass/app.scss', 'public/css');
+    // .scripts('resources/js/assets/test_vanilla.js','public/js/test_vanilla.js')
+    // .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/users/usersMaster.scss', 'public/css')
+    .sass('resources/sass/organization/orgMaster.scss', 'public/css');

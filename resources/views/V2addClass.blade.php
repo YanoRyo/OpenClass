@@ -13,20 +13,29 @@
         </div>
         <div class="addNewForm__wrapper">
         <div class="addNewForm__left"><!-- 左側 -->
-          <form method='POST' action="{{ route('store3') }}" enctype="multipart/form-data" id="addNewForm__edit" class="addNewForm__edit">
+        @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+        @endif
+          <form method='POST' action="{{ route('store3') }}" enctype="multipart/form-data" id="addClass_form" class="addNewForm__edit">
             @csrf
             <div class="addNewForm__edit--flex">
               <div class="addNewForm__edit--tmp addNewForm__edit--flex--left">
-                <label for="classID">Class ID</label>
-                <input class="addNewForm__edit--input" type="text" name="class_num" id="classID" placeholder="Add Class ID.">
+                <label for="classID">Class ID <span class="form-required">*必須</span></label>
+                <input class="addNewForm__edit--input addNewForm__edit--input--ID" type="text" name="class_num" id="classID" placeholder="Add Class ID.">
               </div>
               <div class="addNewForm__edit--tmp addNewForm__edit--flex--right">
-                <label for="subject">Subject</label>
+                <label for="subject">Subject <span class="form-required">*必須</span></label>
                 <input class="addNewForm__edit--input" type="text" name="class_name" id="subject" placeholder="Add new Subject name.">
               </div>
             </div>
             <div class="addNewForm__edit--tmp">
-              <label for="instractor">Instractor</label>
+              <label for="instractor">Instractor <span class="form-required">*必須</span></label>
               <input class="addNewForm__edit--input" type="text" list="teacherList" id="teacher-name" id="instractor" name="teacher_id" placeholder="Select Instractor.">
               <datalist id="teacherList">
                 @foreach($teacheies as $teacher)
@@ -36,11 +45,11 @@
               <input type="hidden" name="teacher_id" id="teacher-name-hidden">
             </div>
             <div class="addNewForm__edit--tmp">
-              <label for="">Categories</label>
-              <div class="addNewForm__edit--tmp--category">
+              <label for="">Categories  <span class="form-required">*必須</span></label>
+              <div class="addNewForm__edit--tmp--category" id="prof-Category-js">
                 @foreach($categories as $category)
-                  <div class="formTmp__cat__checkBox--btn--each">
-                    <input type="checkbox" id="{{$category->id}}" name="category[]" value="{{$category->category}}">
+                  <div class="category-btn-selectbox">
+                    <input type="checkbox" id="{{$category->id}}" name="teacher_category[]" value="{{$category->category}}">
                     <label for="{{$category->id}}">{{$category->category}}</label>
                   </div>
                 @endforeach
@@ -69,7 +78,7 @@
               <button class="addNewForm__submit--btn--cancel">Cancel</button>
             </div>
             <div class="addNewForm__submit--btn">
-              <input type="submit" name="submit" form="addNewForm__edit" value="Submit">
+              <input type="submit" name="submit" form="addClass_form" value="Submit" id="addClass_submit" disabled>
             </div>
           </div>
         </div>

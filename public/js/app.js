@@ -49874,6 +49874,96 @@ var app = new Vue({
 
 /***/ }),
 
+/***/ "./resources/js/assets/Uusers/users.js":
+/*!*********************************************!*\
+  !*** ./resources/js/assets/Uusers/users.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.sbjProfCard').on('click', function () {
+    location.href = $(this).attr('data-url');
+  });
+  $('.sbjProfCard').on('click', function () {
+    console.log('クリックされました。');
+  });
+  $('.categoryList__list--each').on({
+    'mouseenter': function mouseenter() {
+      var categoryListHover = {
+        "font-size": "15px",
+        "width": "180px",
+        "height": "34px",
+        "line-height": "34px",
+        "background-color": "#61819D",
+        "color": "#FFF",
+        "font-weight": "bold"
+      };
+      var categoryListHoverP = {
+        "font-size": "14px",
+        "width": "160px",
+        "height": "29px",
+        "line-height": "29px"
+      };
+      $(this).children().css(categoryListHover);
+      $(this).prev().children().css(categoryListHoverP);
+      $(this).next().children().css(categoryListHoverP);
+    },
+    'mouseleave': function mouseleave() {
+      var categoryListUnhover = {
+        "font-size": "13px",
+        "width": "145px",
+        "height": "29px",
+        "line-height": "29px",
+        "background-color": "#FFF",
+        "color": "#000",
+        "font-weight": "normal"
+      };
+      $(this).children().css(categoryListUnhover);
+      $(this).prev().children().css(categoryListUnhover);
+      $(this).next().children().css(categoryListUnhover);
+    }
+  });
+  $('.sbjProfCard__info__bottom').each(function (index, element) {
+    var categoryOriginal = $(this).children().text();
+    console.log(categoryOriginal);
+    var categorySplit = categoryOriginal.split(',');
+    console.log(categorySplit);
+    var categoryOutput = '';
+    $.each(categorySplit, function (index, val) {
+      categoryOutput += '<div class="sbjProfCard__info__bottom--category"><span>' + val + '</span></div>';
+    });
+    categoryOutput += '';
+    $(this).append(categoryOutput);
+  });
+}); //questionnaire
+
+$(function () {
+  $('#question__time--time--display').text(97);
+  setInterval(function () {
+    var timeDisplay = $('#question__time--time--display').text();
+    var nowTime = timeDisplay - 1;
+    $('#question__time--time--display').text(nowTime);
+
+    if (nowTime <= 0) {
+      $('.question__time--time').children().css('color', '#FF5D15');
+    }
+  }, 1200);
+});
+$(function () {
+  $('.quesWrap__ques--each__block--value--val--each').on('click', function () {
+    if ($(this).nextAll().children().hasClass('valueBtn-value-clicked')) {
+      $(this).nextAll().children().removeClass('valueBtn-value-clicked');
+    } else if ($(this).prevAll().children().hasClass('valueBtn-value-clicked')) {
+      $(this).prevAll().children().removeClass('valueBtn-value-clicked');
+    }
+
+    $(this).children('.valueBtn-value').addClass('valueBtn-value-clicked');
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/assets/chart.js":
 /*!**************************************!*\
   !*** ./resources/js/assets/chart.js ***!
@@ -49917,13 +50007,74 @@ var myChart = new Chart(ctx, {
 
 /***/ }),
 
-/***/ "./resources/js/assets/test_jquery.js":
-/*!********************************************!*\
-  !*** ./resources/js/assets/test_jquery.js ***!
-  \********************************************/
+/***/ "./resources/js/assets/organization/org.js":
+/*!*************************************************!*\
+  !*** ./resources/js/assets/organization/org.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+$(function () {
+  $('.list-detail-show-inCharge').each(function (index, element) {
+    var getClass = $(this).children().attr('class');
+
+    if (getClass !== 'txt-span inCharge') {
+      $(this).append('<span class="txt-span inCharge">掲載なし</span>');
+    }
+  });
+});
+$(function () {
+  $('.updateForm__date--category').each(function (index, element) {
+    var profCat = $(this).val();
+    var profCatSplit = profCat.split(',');
+    var profCatDisplay = '';
+    $.each(profCatSplit, function (index, val) {
+      profCatDisplay += '<data class="updateForm__edit--tmp--categorySplit" value="' + val + '"></data>';
+    });
+    profCatDisplay += '';
+    $(this).next().children().append(profCatDisplay);
+  });
+  $('.category-btn-selectbox').each(function (index, element) {
+    $(this).find('.updateForm__edit--tmp--categorySplit').each(function (i) {
+      $(this).addClass('updateForm__category' + (i + 1));
+    });
+    var profCat1 = $(this).find('.updateForm__category1').val();
+    var profCat2 = $(this).find('.updateForm__category2').val();
+    var profCat3 = $(this).find('.updateForm__category3').val();
+    var profCat4 = $(this).find('.updateForm__category4').val();
+    var profCat5 = $(this).find('.updateForm__category5').val();
+    var profCat6 = $(this).find('.updateForm__category6').val();
+    var profCat7 = $(this).find('.updateForm__category7').val();
+    var profCat8 = $(this).find('.updateForm__category8').val();
+    var profCat9 = $(this).find('.updateForm__category9').val();
+    var profCat10 = $(this).find('.updateForm__category10').val();
+    var nowCat = $(this).find('.category-btn-selectbox-js').val();
+
+    if (profCat1 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat2 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat3 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat4 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat5 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat6 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat7 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat8 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat9 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else if (profCat10 == nowCat) {
+      $(this).find('.category-btn-selectbox-js').prop('checked', true);
+    } else {
+      $(this).find('.category-btn-selectbox-js').prop('checked', false);
+    }
+  });
+});
 $(function () {
   $('.mgmtList__main__list--child').each(function () {
     var spins = $(this).next().find('.js-category-span').val();
@@ -49937,6 +50088,8 @@ $(function () {
 
     $(this).next().find('.list-detail-show-category').html(spanTag);
   });
+});
+$(function () {
   /*$('.actionBtn__btn--edit').on('click', function(e){
     var teacherID = $(this).attr('id');
     history.pushState(null,null,"/V2teacher/V2updateTeacher/"+teacherID);
@@ -49944,10 +50097,10 @@ $(function () {
   $('.updateForm__submit--btn--cancel').on('click',function(){
     history.pushState(null,null,"/V2teacher");
   });*/
-
   $('.actionBtn__btn--edit--prof').on('click', function () {
     var teacherID = $(this).attr('id');
-    window.location.href = "/V2updateTeacher/" + teacherID;
+    var teacherIDnew = teacherID.slice(4);
+    window.location.href = "/V2updateTeacher/" + teacherIDnew;
   });
   $('.actionBtn__btn--edit--class').on('click', function () {
     var classID = $(this).attr('id');
@@ -50091,6 +50244,175 @@ $(function () {
     $('.filterMW').toggleClass('filterMW__main--active');
     $(this).find('.filter-logo-img').toggleClass('filter-logo-img-active');
   });
+}); //update form 制限
+
+$(function () {
+  var $submitBtnProf = $('#addProf_submit');
+  var addressCheck = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+  $('#addProf_form').on('change', function () {
+    if ($(this).find('.addNewForm__edit--input').val() !== "" && $(this).find('.addNewForm__edit--input--ID').val().length >= 4 && $(this).find('.addNewForm__edit--input--email').val().match(addressCheck) && $(this).find('#prof-Category-js input:checkbox:checked').length > 0) {
+      $submitBtnProf.prop('disabled', false);
+      $submitBtnProf.css({
+        'opacity': '1'
+      }, {
+        'box-shadow': '0px 3px 10px 0px rgb(0 60 111 / 20%)'
+      });
+    } else {
+      $submitBtnProf.prop('disabled', true);
+      $submitBtnProf.css({
+        'opacity': '.4'
+      }, {
+        'box-shadow': '0px 3px 10px 0px rgb(0 60 111 / 0%)'
+      });
+    }
+  });
+});
+$(function () {
+  var $submitBtnClass = $('#addClass_submit');
+  $('#addClass_form').on('change', function () {
+    if ($(this).find('.addNewForm__edit--input').val() !== "" && $(this).find('.addNewForm__edit--input--ID').val().length >= 4 && $(this).find('#prof-Category-js input:checkbox:checked').length > 0) {
+      $submitBtnClass.prop('disabled', false);
+      $submitBtnClass.css({
+        'opacity': '1'
+      }, {
+        'box-shadow': '0px 3px 10px 0px rgba(0, 60, 111, 0.2)'
+      });
+    } else {
+      $submitBtnClass.prop('disabled', true);
+      $submitBtnClass.css({
+        'opacity': '.4'
+      }, {
+        'box-shadow': '0px 3px 10px 0px rgba(0, 60, 111, 0)'
+      });
+    }
+  });
+  var $submitBtnUpdate = $('#updateForm_submit');
+
+  if ($(this).find('.addNewForm__edit--input--name').val() !== "" && $(this).find('.addNewForm__edit--input--ID').val().length >= 4 && $(this).find('.updateForm__edit--tmp--category input:checkbox:checked').length > 0) {
+    $submitBtnUpdate.prop('disabled', false);
+    $submitBtnUpdate.css({
+      'opacity': '1'
+    }, {
+      'box-shadow': '0px 3px 10px 0px rgba(0, 60, 111, 20%)'
+    });
+  } else {
+    $submitBtnUpdate.prop('disabled', true);
+    $submitBtnUpdate.css({
+      'opacity': '.4'
+    }, {
+      'box-shadow': '0px 3px 10px 0px rgba(0, 60, 111, 0%)'
+    });
+  }
+});
+$(function () {
+  if ($('.addNewForm__edit--input--name').val() !== "") {
+    $('.addNewForm__edit--input--name').prev().find('.form-required').html('*OK');
+    $('.addNewForm__edit--input--name').prev().find('.form-required').addClass('form-required-ok');
+  }
+
+  if ($('.addNewForm__edit--input--ID').val() !== "") {
+    $('.addNewForm__edit--input--ID').prev().find('.form-required').html('*OK');
+    $('.addNewForm__edit--input--ID').prev().find('.form-required').addClass('form-required-ok');
+  }
+
+  if ($('.addNewForm__edit--input--email').val() !== "") {
+    $('.addNewForm__edit--input--email').prev().find('.form-required').html('*OK');
+    $('.addNewForm__edit--input--email').prev().find('.form-required').addClass('form-required-ok');
+  }
+
+  if ($('.updateForm__edit--tmp--category input:checkbox:checked').length > 0) {
+    $('.updateForm__edit--tmp--category').prev().prev().find('.form-required').html('*OK');
+    $('.updateForm__edit--tmp--category').prev().prev().find('.form-required').addClass('form-required-ok');
+  }
+
+  $('.updateForm__edit--tmp--category input').on('change', function () {
+    if ($('.updateForm__edit--tmp--category input:checkbox:checked').length > 0) {
+      $(this).parent().parent().prev().prev().find('.form-required').html('*OK');
+      $(this).parent().parent().prev().prev().find('.form-required').addClass('form-required-ok');
+    } else {
+      $(this).parent().parent().prev().prev().find('.form-required').html('*必須');
+      $(this).parent().parent().prev().prev().find('.form-required').removeClass('form-required-ok');
+    }
+  });
+});
+$(function () {
+  $('.addNewForm__edit--input').on('input', function () {
+    if ($(this).val() !== "") {
+      $(this).prev().find('.form-required').html('*OK');
+      $(this).prev().find('.form-required').addClass('form-required-ok');
+    } else {
+      $(this).prev().find('.form-required').html('*必須');
+      $(this).prev().find('.form-required').removeClass('form-required-ok');
+    }
+  });
+  $('.addNewForm__edit--input--ID').on('input', function () {
+    if ($(this).val().length >= 4) {
+      $(this).prev().find('.form-required').html('*OK');
+      $(this).prev().find('.form-required').addClass('form-required-ok');
+    } else {
+      $(this).prev().find('.form-required').html('*必須');
+      $(this).prev().find('.form-required').removeClass('form-required-ok');
+    }
+  });
+  $('.addNewForm__edit--input--email').on('input', function () {
+    var addressCheck = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+
+    if ($(this).val().match(addressCheck)) {
+      $(this).prev().find('.form-required').html('*OK');
+      $(this).prev().find('.form-required').addClass('form-required-ok');
+    } else {
+      $(this).prev().find('.form-required').html('*必須');
+      $(this).prev().find('.form-required').removeClass('form-required-ok');
+    }
+  });
+  $('#prof-Category-js input').on('change', function () {
+    if ($('#prof-Category-js input:checkbox:checked').length > 0) {
+      $(this).parent().parent().prev().find('.form-required').html('*OK');
+      $(this).parent().parent().prev().find('.form-required').addClass('form-required-ok');
+    } else {
+      $(this).parent().parent().prev().find('.form-required').html('*必須');
+      $(this).parent().parent().prev().find('.form-required').removeClass('form-required-ok');
+    }
+  });
+});
+$(function () {
+  $('.addCategory__added--category').find('input:checkbox').on('change', function () {
+    var cnt = $('.addCategory__added--category').find('input:checkbox:checked').length;
+
+    if (cnt > 0) {
+      $('#delete-submit').prop('disabled', false);
+      $('.delete__btn--category').addClass('delete__btn--category--checked');
+    } else if (cnt == 0) {
+      $('#delete-submit').prop('disabled', true);
+      $('.delete__btn--category').removeClass('delete__btn--category--checked');
+    }
+  });
+});
+$(function () {
+  $('#new-category-input').on('input', function () {
+    var searchText = $(this).val();
+    $('.attention-message').empty();
+    var newCategory = $(this).val().length;
+    var categoryVals = $('.category-btn-selectbox data').map(function () {
+      return $(this).val();
+    }).get();
+
+    if ($.inArray(searchText, categoryVals) != -1) {
+      var attention = '<span>*重複するため追加できません。</span>';
+      $('.attention-message').append(attention);
+      $('.addCategory__form--submit').prop('disabled', true);
+      $('#actionBtn--blue--category').removeClass('actionBtn--blue--category');
+      $('#actionBtn--blue--category').addClass('actionBtn--blue--category--disabled');
+    } else if (newCategory > 0) {
+      $('.addCategory__form--submit').prop('disabled', false);
+      $('#actionBtn--blue--category').addClass('actionBtn--blue--category');
+      $('#actionBtn--blue--category').removeClass('actionBtn--blue--category--disabled');
+    } else if (newCategory == 0) {
+      $('.addCategory__form--submit').prop('disabled', true);
+      $('#actionBtn--blue--category').removeClass('actionBtn--blue--category');
+      $('#actionBtn--blue--category').addClass('actionBtn--blue--category--disabled');
+    }
+  });
 });
 document.querySelector('input[list]').addEventListener('input', function (e) {
   var input = e.target,
@@ -50226,10 +50548,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/sass/organization/orgMaster.scss":
+/*!****************************************************!*\
+  !*** ./resources/sass/organization/orgMaster.scss ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/users/usersMaster.scss":
+/*!***********************************************!*\
+  !*** ./resources/sass/users/usersMaster.scss ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -50238,16 +50571,18 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*********************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/js/assets/test_jquery.js ./resources/js/assets/chart.js ./resources/sass/app.scss ***!
-  \*********************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/js/assets/Uusers/users.js ./resources/js/assets/organization/org.js ./resources/js/assets/chart.js ./resources/sass/users/usersMaster.scss ./resources/sass/organization/orgMaster.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/ec2-user/environment/openclass/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/ec2-user/environment/openclass/resources/js/assets/test_jquery.js */"./resources/js/assets/test_jquery.js");
+__webpack_require__(/*! /home/ec2-user/environment/openclass/resources/js/assets/Uusers/users.js */"./resources/js/assets/Uusers/users.js");
+__webpack_require__(/*! /home/ec2-user/environment/openclass/resources/js/assets/organization/org.js */"./resources/js/assets/organization/org.js");
 __webpack_require__(/*! /home/ec2-user/environment/openclass/resources/js/assets/chart.js */"./resources/js/assets/chart.js");
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/openclass/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/ec2-user/environment/openclass/resources/sass/users/usersMaster.scss */"./resources/sass/users/usersMaster.scss");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/openclass/resources/sass/organization/orgMaster.scss */"./resources/sass/organization/orgMaster.scss");
 
 
 /***/ })

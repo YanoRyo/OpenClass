@@ -1,0 +1,50 @@
+@import "users_colorFont";
+
+body{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header{
+  height: 52px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $bg-color-3;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  position: fixed;
+  top: 0;
+  &__logo{
+    line-height: 52px;
+    span{
+      color: #FFF;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+  &__search{
+    line-height: 52px;
+    input{
+      width: 600px;
+      height: 26px;
+    }
+  }
+  &__opt{
+    display: flex;
+    &--btn{
+      padding: 13px 0;
+      margin: 0 15px;
+      img{
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+}
+
+main{
+  margin-top: 52px;
+  height: calc(100vh - 52px);
+  overflow: hidden;
+}

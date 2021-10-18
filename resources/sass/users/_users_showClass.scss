@@ -1,0 +1,37 @@
+
+
+.showWrapper{
+  .showTemp__top--left{
+    &--top{
+      height: 40px;
+      .showClass__subj{
+        display: flex;
+        .sbjProfCard__info__top--val{
+          margin-right: 10px;
+          &--pentagon{
+            border-width: 0 15px 12px;
+            &::after{
+              width: 18px;
+              border-width: 17px 6px 0;
+              top: 12px;
+              left: -15px;
+            }
+            span{
+              font-size: 12px;
+              top: 16px;
+            }
+          }
+        }
+      }
+    }
+    &--bottom{
+      .showClass__profName{
+        .profName-data{
+          font-size: 18px;
+          font-weight: bold;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

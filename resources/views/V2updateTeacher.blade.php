@@ -21,34 +21,40 @@
         ?>
         <div class="updateForm__wrapper">
           <div class="updateForm__left"><!-- 左側 -->
-          <form method='POST' action="{{ route('update01',['id' => $id]) }}" enctype="multipart/form-data" id="updateForm__edit">
+          
+          <form method='POST' action="{{ route('update01',['id' => $id]) }}" enctype="multipart/form-data" id="updateForm__edit" class="addNewForm__edit--input">
             @csrf
             <div class="updateForm__edit--flex">
               <div class="updateForm__edit--tmp updateForm__edit--flex--left">
-                <label for="classID">Professor ID</label>
-                <input class="updateForm__edit--input" type="text" id="classID" value="1011">
+                <label for="classID">Professor ID  <span class="form-required">*必須</span></label>
+                <input class="updateForm__edit--input addNewForm__edit--input--ID" type="text" id="classID" value="1011">
               </div>
-              <div class="updateForm__edit--tmp updateForm__edit--flex--right">
-                <label for="subject">Professor name</label>
-                <input class="updateForm__edit--input" type="text" id="subject" name="name" value="{{$show_teacher->name}}">
+              <div class="updateForm__edit--tmp updateForm__edit--flex--right" id="prof-Name-js">
+                <label for="subject">Professor name  <span class="form-required">*必須</span></label>
+                <input class="updateForm__edit--input addNewForm__edit--input addNewForm__edit--input--name" type="text" id="subject" name="name" value="{{$show_teacher->name}}">
               </div>
             </div>
             <div class="updateForm__edit--tmp updateForm__edit--flex--right">
-              <label for="mail">Mail</label>
-              <input class="updateForm__edit--input" type="text" id="" name="email" value="{{$show_teacher->email}}">
+              <label for="mail">Mail  <span class="form-required">*必須</span></label>
+              <input class="updateForm__edit--input addNewForm__edit--input--email" type="email" id="" name="email" value="{{$show_teacher->email}}">
             </div>
             <div class="updateForm__edit--tmp updateForm__edit--flex--right">
               <label for="prof-image">Image</label>
-              <img class="profImg-preview" src="{{ asset($show_teacher->image) }}" width="181px" height="136px">
+              @if(is_null($show_teacher->image))
+                <img class="profImg-preview" src="{{ asset('images/null_image.png') }}" width="181px" height="136px">
+              @else
+                <img class="profImg-preview" src="{{ asset($show_teacher->image) }}" width="181px" height="136px">
+              @endif
               <input type="file" name="image" id="prof-image" accept="image/jpeg,image/gif,image/png" class="prof-image">
               <label for="prof-image" class="edit-uploadImg-btn">Upload image</label>
             </div>
             <div class="updateForm__edit--tmp">
-              <label for="">Categories</label>
-              <div class="updateForm__edit--tmp--category">
+              <label for="">Categories  <span class="form-required">*必須</span></label>
+              <data class="updateForm__date--category" value="{{$show_teacher->teacher_category}}"></data>
+              <div class="updateForm__edit--tmp--category" id="prof-Category-js">
                 @foreach($all_categories as $category)
                   <div class="category-btn-selectbox">
-                    <input type="checkbox" id="{{$category->id}}" name="category[]" value="{{$category->category}}">
+                    <input type="checkbox" id="{{$category->id}}" name="teacher_category[]" value="{{$category->category}}" class="category-btn-selectbox-js">
                     <label for="{{$category->id}}">{{$category->category}}</label>
                   </div>
                 @endforeach
@@ -77,7 +83,7 @@
                 <button class="updateForm__submit--btn--cancel">Cancel</button>
               </div>
               <div class="updateForm__submit--btn">
-                <input type="submit" name="submit" form="updateForm__edit" value="Submit">
+                <input type="submit" name="submit" form="updateForm__edit" value="Submit" id="updateForm_submit">
               </div>
             </div>
           </div>

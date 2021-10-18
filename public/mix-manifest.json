@@ -1,5 +1,5 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/test_vanilla.js": "/js/test_vanilla.js"
+    "/css/usersMaster.css": "/css/usersMaster.css",
+    "/css/orgMaster.css": "/css/orgMaster.css"
 }

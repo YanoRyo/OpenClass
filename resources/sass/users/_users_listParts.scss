@@ -1,0 +1,128 @@
+@import "users_colorFont";
+
+.sbjProfCard{
+  box-sizing: border-box;
+  width: 166px;
+  height: 187px;
+  border: solid 1px #E0E0E0;
+  border-radius: 10px;
+  margin-right: 20px;
+  transition: 0.3s;
+  &:hover{
+    /* box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1); */
+    /* transform: translateY(-3px); */
+    transform: translateY(-5px);
+  }
+  &__profImage{
+    width: 162px;
+    height: 110px;
+    border-radius: 9px 9px 0 0;
+    img{
+      width: 164px;
+      height: 110px;
+      border-radius: 9px 9px 0 0;
+    }
+  }
+  &__info{
+    width: 164px;
+    height: 76px;
+     &__top{
+       width: 164px;
+       height: 34px;
+       display: flex;
+       &--val{
+         width: 32px;
+         text-align: center;
+         &--pentagon{
+           margin: 5px auto;
+           position: relative;
+           height: 0;
+           width: 0;
+           border-width: 0 12px 10px;
+           border-style: solid;
+           border-color: transparent transparent #4472A7;
+           text-align: center;
+            &:after{
+              content: "";
+              position: absolute;
+              width: 14px;
+              border-width: 14px 5px 0;
+              border-style: solid;
+              border-color: #4472A7 transparent;
+              top: 10px;
+              left: -12px;
+            }
+          span{
+            font-size: 10px;
+            color: #FFF;
+            font-weight: bold;
+            z-index: 1;
+            position: absolute;
+            top: 14px;
+            transform: translate(-46%,-49%);
+          }
+         }
+       }
+       &--name{
+         width: 130px;
+         margin-left: 4px;
+         font-weight: bold;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         span{
+           line-height: 34px;
+           font-size: 14px;
+           width: 130px;
+           white-space: nowrap;
+           overflow: hidden;
+           text-overflow: ellipsis;
+         }
+       }
+     }
+     &__bottom{
+       height: 38px;
+       padding: 0 4px;
+       display: flex;
+       flex-wrap: wrap;
+       &--category{
+         height: 14px;
+         display: inline-block;
+         border: solid 1px #4472A7;
+         line-height: 11px;
+         border-radius: 4px;
+         margin-right: 5px;
+         margin-bottom: 4px;
+         span{
+           font-size: 10px;
+           color: #707070;
+           line-height: 14px;
+           padding: 2px 3px;
+         }
+       }
+     }
+  }
+}
+
+
+.penpen{
+  display: flex;
+}
+.pentagon2 {
+  position: relative;
+  height: 0;
+  width: 0;
+  border-width: 0 12px 10px;
+  border-style: solid;
+  border-color: transparent transparent #4472A7;
+}
+.pentagon2:after{
+  content: "";
+  position: absolute;
+  width: 14px;
+  border-width: 14px 5px 0;
+  border-style: solid;
+  border-color: #4472A7 transparent;
+  top: 10px;
+  left: -12px;
+}
