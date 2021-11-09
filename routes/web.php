@@ -69,7 +69,18 @@ Route::group(['prefix'=>'org','middleware'=>'auth'],function(){
 	Route::post('/destroy','CategoryController@categories_destroy');
 });
 
-Route::group(['prefix'=>'users','middleware'=>'auth'],function(){
+// Route::group(['prefix'=>'users','middleware'=>'auth'],function(){
+// 	Route::get('/studentsClass','StudentController@list_class')->name('.users.studentsClass');
+// 	Route::get('/studentsClass_show/{id}','StudentController@show_class')->name('users.studentsClass_show');
+// 	Route::get('/studentsTeacher','StudentController@list_teacher')->name('users.studentsTeacher');
+// 	Route::get('/studentsTeacher_show/{id}','StudentController@show_teacher')->name('users.studentsTeacher_show');
+// 	Route::get('/questionnaire/{id}','StudentController@questionnaire')->name('users.questionnaire');
+// 	Route::post('/store4','StudentController@store4')->name('users.store4');
+// 	Route::get('/questionnaire-thanks','StudentController@show_thanks')->name('users.questionnaire-thanks');
+
+
+// });
+	
 	Route::get('/studentsClass','StudentController@list_class')->name('.users.studentsClass');
 	Route::get('/studentsClass_show/{id}','StudentController@show_class')->name('users.studentsClass_show');
 	Route::get('/studentsTeacher','StudentController@list_teacher')->name('users.studentsTeacher');
@@ -77,11 +88,6 @@ Route::group(['prefix'=>'users','middleware'=>'auth'],function(){
 	Route::get('/questionnaire/{id}','StudentController@questionnaire')->name('users.questionnaire');
 	Route::post('/store4','StudentController@store4')->name('users.store4');
 	Route::get('/questionnaire-thanks','StudentController@show_thanks')->name('users.questionnaire-thanks');
-
-
-});
-	
-	
 	
 
 	
