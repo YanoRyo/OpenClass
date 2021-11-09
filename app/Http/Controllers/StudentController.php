@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Lesson;
 use App\Teacher;
 use App\Category;
+use App\Questionnaire;
+
 
 class StudentController extends Controller
 {
@@ -17,6 +19,7 @@ class StudentController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
@@ -28,6 +31,15 @@ class StudentController extends Controller
     {
         //
     }
+    
+    public function questionnaire($id){
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
+                    ->get();
+        
+        $classes = $classes->where('id',$id);
+                    
+        return view('users.questionnaire',compact('classes'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,9 +47,32 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store4(Request $request)
     {
         //
+        $questionnaire = new Questionnaire;
+        
+        $questionnaire->que_1 = $request->que_1;
+        $questionnaire->que_2 = $request->que_2;
+        $questionnaire->que_3 = $request->que_3;
+        $questionnaire->que_4 = $request->que_4;
+        $questionnaire->que_5 = $request->que_5;
+        $questionnaire->if_text1 = $request->if_text1;
+        $questionnaire->if_text1 = $request->if_text1;
+        $questionnaire->better_text = $request->better_text;
+        $questionnaire->comment = $request->comment;
+        
+        $questionnaire->save();
+        
+        return redirect('users/questionnaire-thanks');
+        
+    }
+    
+    public function show_thanks(){
+        
+       
+                    
+        return view('users.questionnaire-thanks');
     }
 
     /**

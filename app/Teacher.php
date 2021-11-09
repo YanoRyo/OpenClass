@@ -8,7 +8,7 @@ class Teacher extends Model
 {
     //
     // protected $table = 'teachers';
-    protected $fillable = ['id','name','image','email','teacher_category','archive_teacher','introduce','update_at','created_at'];
+    protected $fillable = ['id','name','image','email','teacher_category','archive_teacher','introduce','created_at','update_at'];
     
     public function user(){
         return $this->belongsTo('App\User');

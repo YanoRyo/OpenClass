@@ -1,0 +1,84 @@
+@import "colorFont";
+body{
+  margin: 0px;
+  box-sizing: border-box;
+}
+.StdTemp{
+  background-color: $main-bg;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: grid;
+  grid-template:
+  "header header header" 52px
+  "category main ranking" calc(100vh - 52px)
+  /200px   calc(100vw - 450px) 250px;
+}
+
+.headerBlock{
+  grid-area: header;
+}
+.categoryBlock{
+  grid-area: category;
+}
+.mainBlock{
+  grid-area: main;
+}
+.rankBlock{
+  grid-area: ranking;
+  background-color: $bg-color-2;
+  z-index: 10;
+}
+
+.searchBlock{
+  display: none;
+  background-color: $bg-color-5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 52px;
+  z-index: 10;
+  transition: .4s;
+}
+.searchBlock--hide{
+  top: -52px;
+  opacity: .4;
+}
+.switchBlock{
+  display: none;
+  width: 100vw;
+  background-color: #FFF;
+  position: fixed;
+  bottom: 0px;
+  height: 100px;
+  z-index: 10px;
+  transition: .4s;
+}
+.switchBlock--hide{
+  bottom: -100px;
+  opacity: .4;
+}
+
+@media screen and (max-width: 1200px){
+  .StdTemp{
+    grid-template:
+    "header header" 52px
+    "category main" calc(100vh - 52px)
+    /200px   calc(100vw - 200px);
+  }
+}
+@media screen and (max-width: 1024px){
+  .StdTemp{
+    grid-template:
+    "main" 100vh
+    /100vw;
+  }
+
+  .searchBlock{
+    display: block;
+  }
+  .switchBlock{
+    display: block;
+  }
+}

@@ -1,5 +1,6 @@
 .question-page{
   background-color: #F1F9FF;
+  min-height: 100vh;
 }
 
 
@@ -32,20 +33,20 @@
     border-radius: 10px;
     &--info{
       padding: 20px 30px 0 30px;
-      position: relative;
       justify-content: center;
       margin-bottom: 20px;
       &--img{
-        position: absolute;
-        left: 100px;
-        width: 68px;
-        height: 68px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 98px;
+        height: 98px;
         border-radius: 50px;
         border: solid 1px #EFEFEF;
         img{
-          width: 68px;
-          height: 68px;
+          width: 98px;
+          height: 98px;
           object-fit: cover;
+          object-position: top;
           border-radius: 50px;
         }
       }
@@ -341,5 +342,91 @@
       }
     }
   }
+  .quesWrap__ques--submit {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
 }
 
+@media screen and (max-width: 374px){
+  .quesWrap__ques--each__block--value--val--each {
+    .valueBtn-value{
+      width: 33px;
+      height: 33px;
+      margin-right: 9px;
+      svg{
+        width: 22px;
+        height: 22px;
+      }
+    }
+    .valueBtn-value1{
+      text-align: center;
+      svg{
+        transform: rotateY(180deg) rotateZ(180deg);
+        margin-top: 7px;
+      }
+    }
+    .valueBtn-value2{
+      text-align: center;
+      svg{
+        transform: rotateY(180deg) rotateZ(-90deg);
+        margin: 6px -3px 0px 0px;
+      }
+    }
+    .valueBtn-value3{
+      text-align: center;
+      svg{
+        transform: rotateY(180deg) rotateZ(-45deg);
+        margin: 4px 0 0 2px;
+      }
+    }
+    .valueBtn-value4{
+      text-align: center;
+      svg{
+        transform: rotateY(180deg) rotateZ(0deg);
+        margin: 4px 1px 0 0;
+      }
+    }
+    .valueBtn-value5{
+      display: flex;
+      justify-content: center;
+      width: 60px;
+      border-radius: 21px;
+      svg{
+        transform: rotateY(180deg) rotateZ(0deg);
+        margin-top: 5px;
+        &:first-child{
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+  .question__time{
+    position: fixed;
+    z-index: 10;
+    bottom: 15px;
+    right: 10px;
+    background-color: $bg-color-5;
+    border-radius: 50%;
+    width: 60px; 
+    height: 60px;
+    text-align: center;
+    box-shadow: 1px 3px 6px rgba(0, 70, 129, .6);
+    &--now{
+      margin-top: 0px;
+      span{
+        font-size:12px;
+        color: #F4FAFF;
+      }
+    }
+    &--time{
+      margin-top: -1px;
+      span{
+        font-weight: bold;
+        font-size: 16px;
+        color: #FFC400;
+      }
+    }
+  }
+}

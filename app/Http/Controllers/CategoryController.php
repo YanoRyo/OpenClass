@@ -17,7 +17,7 @@ class CategoryController extends Controller
     
     public function index(){
     	$categories = Category::all();
-    	return view('V2category',compact('categories'));
+    	return view('org/category',compact('categories'));
     }
     
     
@@ -41,16 +41,16 @@ class CategoryController extends Controller
            
             $alert_category = "そのカテゴリはすでに追加されています";
             $categories = Category::all();
-            return view('V2category',compact('alert_category','categories'));
+            return view('org/category',compact('alert_category','categories'));
             
         }elseif(!$result){
             $new_category->category = $search_category;
             $new_category->save();
-            return redirect('V2category');
+            return redirect('org/category');
         }else{
             $alert_category = "そのカテゴリはすでに追加されています";
             $categories = Category::all();
-            return view('V2category',compact('alert_category','categories'));
+            return view('org/category',compact('alert_category','categories'));
         }
         
     }
@@ -65,7 +65,12 @@ class CategoryController extends Controller
         }
         
         
-        return redirect('V2category');
+        return redirect('org/category');
+    }
+    
+    public function show(){
+        
+        return view('org/questionnaire');
     }
     
     // protected $category = null;

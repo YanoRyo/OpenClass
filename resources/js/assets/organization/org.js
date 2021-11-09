@@ -80,31 +80,32 @@ $(function(){
 
   /*$('.actionBtn__btn--edit').on('click', function(e){
     var teacherID = $(this).attr('id');
-    history.pushState(null,null,"/V2teacher/V2updateTeacher/"+teacherID);
+    history.pushState(null,null,"/org/class/teacher/org/class/updateTeacher/"+teacherID);
   });
   $('.updateForm__submit--btn--cancel').on('click',function(){
-    history.pushState(null,null,"/V2teacher");
+    history.pushState(null,null,"/org/class/teacher");
   });*/
   
   $('.actionBtn__btn--edit--prof').on('click', function(){
     var teacherID = $(this).attr('id');
     var teacherIDnew = teacherID.slice(4);
-    window.location.href = "/V2updateTeacher/"+teacherIDnew;
+    window.location.href = "/org/updateTeacher/"+teacherIDnew;
   });
   $('.actionBtn__btn--edit--class').on('click', function(){
     var classID = $(this).attr('id');
-    window.location.href = "/V2updateClass/"+classID;
+    var classIDnew = classID.slice(5);
+    window.location.href = "/org/updateClass/"+classIDnew;
   });
   
   //gNav eachBtn href
   $('#gNav-management-btn').on('click', function(){
-    	window.location.href = "/V2class";
+    	window.location.href = "/org/class";
   })
   $('#gNav-archive-btn').on('click', function(){
-    	window.location.href = "/V2archiveClass";
+    	window.location.href = "/org/archiveClass";
   })
   $('#gNav-category-btn').on('click', function(){
-    	window.location.href = "/V2category";
+    	window.location.href = "/org/category";
   })
   $('#gNav-accessManagement-btn').on('click', function(){
     	window.location.href = "#";
@@ -115,17 +116,17 @@ $(function(){
   
   //management class prof switchbtn
   $('.mainHead__switch__btn--class').on('click', function(){
-    	window.location.href = "/V2class";
+    	window.location.href = "/org/class";
   })
   $('.mainHead__switch__btn--prof').on('click', function(){
-    	window.location.href = "/V2teacher";
+    	window.location.href = "/org/teacher";
   })
   //management archive class prof switchbtn
   $('.mainHead__switch__btn--class--archive').on('click', function(){
-    	window.location.href = "/V2archiveClass";
+    	window.location.href = "/org/archiveClass";
   })
   $('.mainHead__switch__btn--prof--archive').on('click', function(){
-    	window.location.href = "/V2archiveTeacher";
+    	window.location.href = "/org/archiveTeacher";
   })
 
   //management list accordion   click-state
@@ -436,7 +437,6 @@ $(function(){
     }
   });
 });
-
 
 document.querySelector('input[list]').addEventListener('input', function(e) {
   var input = e.target,

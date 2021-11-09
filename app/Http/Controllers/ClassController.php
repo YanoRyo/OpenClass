@@ -46,7 +46,7 @@ class ClassController extends Controller
         // }
         // dd($categories);
         
-        return view('V2class',compact('categories','teacheies','classes'));
+        return view('org.class',compact('categories','teacheies','classes'));
     }
 
     /**
@@ -82,7 +82,7 @@ class ClassController extends Controller
         if(in_array($search_string,$arrays_teacher)){
             $class->teacher_id = $search_string;
         }elseif(is_string($search_string)){
-            return redirect('V2class');
+            return redirect('org/class');
         }
         
         // // ==========ここから追加する==========
@@ -101,7 +101,7 @@ class ClassController extends Controller
         // $class->teacher_id = $request->teacher_id;
         $class->save();
         
-        return redirect('V2class');
+        return redirect('org/class');
         
     }
 
@@ -115,7 +115,7 @@ class ClassController extends Controller
     {
         //
         
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
         $classes = $classes->where('id',$id);
@@ -126,7 +126,7 @@ class ClassController extends Controller
        
         
         
-        return view('show_class',compact('classes','categories'));
+        return view('org.show_class',compact('classes','categories'));
     }
 
     /**
@@ -139,10 +139,13 @@ class ClassController extends Controller
     {
         //
         
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
         $classes = $classes->where('id',$id);
+        // dd($classes);
+        // dd($classes);
         foreach($classes as $class){
             $categorys = $class->category;
             $categories = explode(",", $categorys);
@@ -151,7 +154,7 @@ class ClassController extends Controller
         $all_categories = Category::all();
         $all_teacheies = Teacher::all();
         
-        return view('V2updateClass',compact('classes','categories','all_categories','all_teacheies'));
+        return view('org.updateClass',compact('classes','categories','all_categories','all_teacheies'));
     }
 
     /**
@@ -181,7 +184,7 @@ class ClassController extends Controller
         $class->category = implode( ',', $array);
         $class->teacher_id = $request->teacher_id;
         $class->save();
-        return redirect('V2class');
+        return redirect('org/class');
     }
 
     /**
@@ -190,24 +193,24 @@ class ClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy1(Request $request)
     {
         //
         // dd($request->id);
         $class = Lesson::find($request->id);
         $class->delete();
         
-        return redirect('V2class');
+        return redirect('org/class');
     }
     
     public function show_list()
     {
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
         
         
-        return view('list_classes',compact('classes'));
+        return view('org.list_classes',compact('classes'));
     }
     
     public function class_archive(Request $request)
@@ -222,21 +225,21 @@ class ClassController extends Controller
         $class->archive_class = $archive_num;
         $class->save();
         
-        return redirect('V2class');
+        return redirect('org/class');
     }
     
     public function show_archive()
     {
         
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
-        return view('V2archiveClass',compact('classes'));
+        return view('org.archiveClass',compact('classes'));
     }
     
     public function show_class_archive($id)
     {
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
         $classes = $classes->where('id',$id);
@@ -247,7 +250,7 @@ class ClassController extends Controller
        
         
         
-        return view('show_class_archive',compact('classes','categories'));
+        return view('org.show_class_archive',compact('classes','categories'));
         
     }
     
@@ -266,7 +269,7 @@ class ClassController extends Controller
         
         // dd($class);
         
-        return redirect('V2archiveClass');
+        return redirect('org/archiveClass');
         
     }
     
@@ -280,19 +283,19 @@ class ClassController extends Controller
         // ==========ここまで追加する==========
         $search = $request->input('search');
         
-        $all_classes = Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $all_classes = Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
         // dd($all_classes);
         // もしキーワードがあったら
         if($search !== null){
             
-            $classes = Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')->where('class_name','like','%'.$search.'%')
+            $classes = Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')->where('class_name','like','%'.$search.'%')
                     ->get();
             
         };
        
-        return view('V2searchClass',compact('classes'));
+        return view('org.searchClass',compact('classes'));
         
     }
     public function search_allclass(Request $request)
@@ -323,23 +326,23 @@ class ClassController extends Controller
         // };
         $search = $request->input('search');
         
-        $all_classes = Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $all_classes = Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         if($search !== null){
             
            
-            $classes = Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')->where('category','like','%'.$search.'%')
+            $classes = Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')->where('category','like','%'.$search.'%')
                     ->get();
                     
                     
         }else{
-            $classes = Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')->where('category','like','%'.$search.'%')
+            $classes = Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')->where('category','like','%'.$search.'%')
                     ->get();
-            $classes = Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')->where('teachers.name','like','%'.$search.'%')
+            $classes = Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')->where('teachers.name','like','%'.$search.'%')
                     ->get();
         };
        
-        return view('V2searchAll',compact('classes'));
+        return view('org.searchAll',compact('classes'));
         
     }
     

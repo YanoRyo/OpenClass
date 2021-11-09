@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Questionnaire extends Model
 {
     //
-    protected $table = 'questionnaires';
+    protected $table = 'quetionnaires';
+    
+    
+    
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

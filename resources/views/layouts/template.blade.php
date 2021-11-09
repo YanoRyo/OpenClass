@@ -1,6 +1,6 @@
 
 
-<!-- openclassV2 template -->
+<!-- openclass template -->
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +21,7 @@
       <div class="headerCont__space">
       </div>
       <div class="headerCont__search">
-        <form method="GET" action="{{route('V2searchAll')}}" class="form-inline my-2 my-lg-0">
+        <form method="GET" action="{{route('org.searchAll')}}" class="form-inline my-2 my-lg-0">
           @csrf
           <input class="search-box font-awesome" name="search" type="search" placeholder="&#x1f50d; Search">
         </form>
@@ -72,7 +72,7 @@
     <div class="gNav__list">
       <div @php
             $now_route = \Route::currentRouteName();
-            if($now_route == "V2class" || $now_route == "V2teacher" || $now_route == "V2updateTeacher" || $now_route == "V2updateClass"){
+            if($now_route == "org.class" || $now_route == "org.teacher" || $now_route == "org.updateTeacher" || $now_route == "org.updateClass"){
               echo'class="gNav__list__menu gNav__list__menu--active"';
             }else{
               echo'class="gNav__list__menu"';
@@ -96,7 +96,7 @@
       <!--</div>-->
        <div @php
             $now_route = \Route::currentRouteName();
-            if($now_route == "V2archiveClass" || $now_route == "V2archiveTeacher"){
+            if($now_route == "org.archiveClass" || $now_route == "org.archiveTeacher"){
               echo'class="gNav__list__menu gNav__list__menu--active gNav__list__menu--sub"';
             }else{
               echo'class="gNav__list__menu gNav__list__menu--sub"';
@@ -109,8 +109,14 @@
           <span class="btn-span">Archives</span>
         </div>
       </div>
-      <div id="gNav-category-btn" class="@if(url()->current() == route('V2category')) 
-          gNav__list__menu gNav__list__menu--active gNav__list__menu--sub @else gNav__list__menu gNav__list__menu--sub @endif">
+      <div @php
+            $now_route = \Route::currentRouteName();
+            if($now_route == "org.category"){
+              echo'class="gNav__list__menu gNav__list__menu--active gNav__list__menu--sub"';
+            }else{
+              echo'class="gNav__list__menu gNav__list__menu--sub"';
+            }
+        @endphp id="gNav-category-btn">
         <div class="gNav__list__menu--logo">
           <img src="/images/list-logo.png" alt="">
         </div>
@@ -120,8 +126,14 @@
       </div>
     </div>
     <div class="gNav__list">
-      <div id="gNav-accessManagement-btn" class="@if(url()->current() == route('V2category')) 
-          gNav__list__menu gNav__list__menu--active @else gNav__list__menu @endif">
+      <div @php
+            $now_route = \Route::currentRouteName();
+            if($now_route == "org.category"){
+              echo'class="gNav__list__menu gNav__list__menu--active"';
+            }else{
+              echo'class="gNav__list__menu"';
+            }
+        @endphp id="gNav-accessManagement-btn">
         <div class="gNav__list__menu--logo">
           <img src="/images/list-logo.png" alt="">
         </div>
@@ -131,8 +143,14 @@
       </div>
     </div>
     <div class="gNav__list">
-      <div id="gNav-QuestionnaireSettings-btn" class="@if(url()->current() == route('V2category')) 
-          gNav__list__menu gNav__list__menu--active @else gNav__list__menu @endif">
+      <div @php
+            $now_route = \Route::currentRouteName();
+            if($now_route == "org.category"){
+              echo'class="gNav__list__menu gNav__list__menu--active"';
+            }else{
+              echo'class="gNav__list__menu"';
+            }
+        @endphp id="gNav-QuestionnaireSettings-btn">
         <div class="gNav__list__menu--logo">
           <img src="/images/list-logo.png" alt="">
         </div>

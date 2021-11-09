@@ -1,0 +1,301 @@
+.headerBlock{
+  margin: 0 20px;
+  padding: 0px 20px;
+  background-color: $bg-color-4;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 3px 2px 12px 2px rgba(53, 53, 58, .3);
+  z-index: 20;
+  &__logo{
+    padding-top: 8px;
+    img{
+      width: 147px;
+    }
+  }
+  &__opt{
+    display: flex;
+    margin-right: 20px;
+    &--each{
+      margin: 13px 15px;
+      img{
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+}
+.categoryBlock{
+  position: relative;
+  top: 0;
+  left: 0;
+  &__ttl{
+    margin: 20px 0 10px 45px;
+    span{
+      font-size: 15px;
+      color: $font-color-2;
+    }
+  }
+  &__list{
+    height: calc(100vh - 106px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    &--each{
+      padding: 6px 10px;
+      cursor: pointer;
+      span{
+        padding: 0 4px;
+        display: block;
+        text-align: center;
+        width: 145px;
+        height: 29px;
+        font-size: 13px;
+        border-radius: 15px;
+        line-height: 29px;
+        background-color: #7FC4FC;
+        color: #FFF;
+        font-weight: normal;
+        box-sizing: border-box;
+        transition: .2s;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+.mainBlock{
+  padding-top: 40px;
+  overflow-y: scroll;
+  .listLine{
+    margin-bottom: 25px;
+    &__categoryTtl{
+      display: inline-block;
+      background-color: $bg-color-4;
+      height: 29px;
+      width: auto;
+      min-width: 140px;
+      border-radius: 15px;
+      padding: 0 20px;
+      line-height: 29px;
+      text-align: center;
+      span{
+        font-size: 15px;
+        color: #FFF;
+      }
+    }
+    &__cardBlock{
+      display: flex;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      padding-top: 15px;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+    }
+    &--each{
+      width: 186px;
+    }
+  }
+}
+.sbjProfCard{
+  cursor: pointer;
+  background-color: #FFF;
+  box-sizing: border-box;
+  width: 166px;
+  height: 187px;
+  border: solid 1px #E0E0E0;
+  border-radius: 10px;
+  margin-right: 20px;
+  transition: 0.3s;
+  overflow: hidden;
+  &:hover{
+    /* box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1); */
+    /* transform: translateY(-3px); */
+    transform: translateY(-5px);
+  }
+  &__profImage{
+    width: 162px;
+    height: 110px;
+    border-radius: 9px 9px 0 0;
+    img{
+      width: 164px;
+      height: 110px;
+      border-radius: 9px 9px 0 0;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+  &__info{
+    width: 164px;
+    height: 76px;
+     &__top{
+       width: 164px;
+       height: 34px;
+       display: flex;
+       &--val{
+         width: 32px;
+         text-align: center;
+         &--pentagon{
+           margin: 5px auto;
+           position: relative;
+           height: 0;
+           width: 0;
+           border-width: 0 12px 10px;
+           border-style: solid;
+           border-color: transparent transparent #4472A7;
+           text-align: center;
+            &:after{
+              content: "";
+              position: absolute;
+              width: 14px;
+              border-width: 14px 5px 0;
+              border-style: solid;
+              border-color: #4472A7 transparent;
+              top: 10px;
+              left: -12px;
+            }
+          span{
+            font-size: 10px;
+            color: #FFF;
+            font-weight: bold;
+            z-index: 1;
+            position: absolute;
+            top: 14px;
+            transform: translate(-46%,-49%);
+          }
+         }
+       }
+       &--name{
+         width: 130px;
+         margin-left: 4px;
+         font-weight: bold;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         span{
+           line-height: 34px;
+           font-size: 14px;
+           width: 130px;
+           white-space: nowrap;
+           overflow: hidden;
+           text-overflow: ellipsis;
+         }
+       }
+     }
+     &__bottom{
+       height: 38px;
+       padding: 0 4px;
+       display: flex;
+       flex-wrap: wrap;
+       overflow-y: scroll;
+       &--category{
+         height: 14px;
+         display: inline-block;
+         border: solid 1px #4472A7;
+         line-height: 11px;
+         border-radius: 4px;
+         margin-right: 5px;
+         margin-bottom: 4px;
+         span{
+           font-size: 10px;
+           color: #707070;
+           line-height: 14px;
+           padding: 2px 3px;
+         }
+       }
+     }
+  }
+}
+
+.switchBlockPC{
+  height: 40px;
+  position: fixed;
+  bottom: 50px;
+  left:45%;
+  margin-left:-100px;
+  line-height: 40px;
+  display: flex;
+  z-index: 30;
+  border-radius: 15px;
+  opacity: .9;
+  transition: .4s;
+  box-shadow: 3px 2px 12px 2px rgba(53, 53, 58, .4);
+  &__btn{
+    background-color: #7FC4FC;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: .2s;
+    span{
+      color:#FFF;
+    }
+    &--left{
+      padding-left: 30px;
+      border-radius: 15px 0 0 15px;
+      background-color: $bg-color-5;
+    }
+    &--right{
+      padding-right: 30px;
+      border-radius: 0 15px 15px 0px;
+    }
+    &:hover{
+      background-color: $bg-color-5;
+    }
+  }
+  &:hover{
+    opacity: 1;
+  }
+}
+.switchBlockPChide{
+  bottom: -40px;
+  opacity: 0;
+}
+
+@media screen and (max-width: 1024px){
+  .mainBlock{
+    padding-top: 70px;
+  }
+  .listLine{
+    &__categoryTtl{
+      margin-left: 15px;
+    }
+    &__cardBlock{
+      padding-left: 10px;
+      &--each:last-child{
+        .sbjProfCard{
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #F1F9FF;
+  z-index: 999;
+}
+#loading #percent {
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 16px;
+  color: $bg-color-4;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+#loading #gauge {
+  width: 0;
+  height: 5px;
+  background: $bg-color-4;
+  position: absolute;
+  top: 60%;
+}

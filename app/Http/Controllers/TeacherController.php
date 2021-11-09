@@ -24,7 +24,7 @@ class TeacherController extends Controller
     	$categories = Category::all();
     	$teacheies = Teacher::all();
     	
-    	$classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+    	$classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                         ->get();
         // $classes =  Lesson::select()->join('teachers','id','=','classes.teachers_id')
                         // ->get();
@@ -65,7 +65,7 @@ class TeacherController extends Controller
         
         // dd($teacheies);
     
-    	return view('V2teacher',compact('categories','teacheies','classes'));
+    	return view('org.teacher',compact('categories','teacheies','classes'));
     }
     
     public function store2(Request $request){
@@ -112,7 +112,7 @@ class TeacherController extends Controller
         // $request->image->storeAs('public/teacher_images', $request->name . '.jpg');
         
 
-        return redirect('V2teacher');
+        return redirect('org/teacher');
 
     }
     
@@ -123,7 +123,7 @@ class TeacherController extends Controller
         $teacheies_category = explode(",", $categorys);
         $teacher_id = $show_teacher->id;
         $teacher_classes= Lesson::where('teacher_id',$teacher_id)->get();
-        return view('show_teacher',compact('show_teacher','teacheies_category','teacher_classes'));
+        return view('org.show_teacher',compact('show_teacher','teacheies_category','teacher_classes'));
     }
     
 
@@ -138,7 +138,7 @@ class TeacherController extends Controller
         $all_categories = Category::all();
         // dd($show_teacher->id);
         
-        return view('V2updateTeacher',compact('show_teacher','teacheies_category','teacher_classes','all_categories'));
+        return view('org.updateTeacher',compact('show_teacher','teacheies_category','teacher_classes','all_categories'));
     }
     
     public function update01(Request $request,$id){
@@ -183,24 +183,24 @@ class TeacherController extends Controller
         
         
         
-        return redirect('V2teacher');
+        return redirect('org/teacher');
         
     }
     
-    public function destroy(Request $request){
+    public function destroy2(Request $request){
         
         
         $teacher = Teacher::find($request->id);
         $teacher->delete();
         
-        return redirect('V2teacher');
+        return redirect('org/teacher');
     }
     
     public function show_list(){
         
         $teachers = Teacher::all();
     
-        return view('list_teachers',compact('teachers'));
+        return view('org.list_teachers',compact('teachers'));
     }
     
     public function teacher_archive(Request $request)
@@ -213,7 +213,7 @@ class TeacherController extends Controller
         
         $teacher->save();
         
-        return redirect('V2teacher');
+        return redirect('org/teacher');
     }
     
     
@@ -222,7 +222,7 @@ class TeacherController extends Controller
         
         $teachers = Teacher::all();
         
-        return view('V2archiveTeacher',compact('teachers'));
+        return view('org.archiveTeacher',compact('teachers'));
     }
     
     
@@ -233,7 +233,7 @@ class TeacherController extends Controller
         $teacheies_category = explode(",", $categorys);
         $teacher_id = $show_teacher->id;
         $teacher_classes= Lesson::where('teacher_id',$teacher_id)->get();
-        return view('show_teacher_archive',compact('show_teacher','teacheies_category','teacher_classes'));
+        return view('org.show_teacher_archive',compact('show_teacher','teacheies_category','teacher_classes'));
         
     }
     
@@ -248,7 +248,7 @@ class TeacherController extends Controller
             $teacher->archive_teacher = null;
             $teacher->save();
         }
-        return redirect('V2archiveTeacher');
+        return redirect('org/archiveTeacher');
     }
     
     public function search_teacher(Request $request)
@@ -269,7 +269,7 @@ class TeacherController extends Controller
            
         };
    
-        return view('V2searchTeacher',compact('teachers'));
+        return view('org.searchTeacher',compact('teachers'));
     }
     
     protected $teacher = null;
