@@ -71,7 +71,7 @@
           </div> 
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
-              <span>この授業は将来役に立つと思いますか？</span>
+              <span>この授業を誰かに勧めたいと思いますか？</span>
             </div>
             <div class="quesWrap__ques--each__block--value">
               <div class="quesWrap__ques--each__block--value--val">
@@ -321,7 +321,7 @@
           </div> 
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
-              <span>この授業は将来役に立つと思いますか？</span>
+              <span>「授業の内容」と「シラバスの内容」は概ね一致していましたか？</span>
             </div>
             <div class="quesWrap__ques--each__block--value">
               <div class="quesWrap__ques--each__block--value--val">
@@ -571,7 +571,7 @@
           </div> 
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
-              <span>この授業は将来役に立つと思いますか？</span>
+              <span>この授業を行なっている教員と授業をするのは楽しいですか？</span>
             </div>
             <div class="quesWrap__ques--each__block--value">
               <div class="quesWrap__ques--each__block--value--val">
@@ -821,7 +821,7 @@
           </div> 
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
-              <span>この授業は将来役に立つと思いますか？</span>
+              <span>この授業は簡単でしたか？</span>
             </div>
             <div class="quesWrap__ques--each__block--value">
               <div class="quesWrap__ques--each__block--value--val">
@@ -1071,7 +1071,7 @@
           </div> 
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
-              <span>この授業は将来役に立つと思いますか？</span>
+              <span>この授業のペースは他の授業のペースに比べてちょうどよかったですか？</span>
             </div>
             <div class="quesWrap__ques--each__block--value">
               <div class="quesWrap__ques--each__block--value--val">
