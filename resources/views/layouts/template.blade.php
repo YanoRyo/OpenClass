@@ -10,12 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link href="{{ asset('css/orgMaster.css') }}" rel="stylesheet">
 <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!--<script src="node_modules/chartjs/dist/Chart.js"></script>-->
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/org-test.js') }}"></script>
+<script src="{{ asset('js/org.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="node_modules/chartjs/dist/Chart.js"></script>
     
 </head>
 <body>
-	
 	<header>
     <div class="headerCont">
       <div class="headerCont__space">

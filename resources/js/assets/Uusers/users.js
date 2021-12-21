@@ -49,7 +49,7 @@ $(function(){
   $('.categoryBlock__list--each').on('click', function(){
     var categoryID = $(this).data('categoryid');
     var position = $('.mainBlock').find('#'+categoryID).data('position');
-    console.log(position);
+    // console.log(position);
     $('html, .mainBlock').animate({scrollTop: position - 100}, 500);
   });
 
@@ -85,6 +85,20 @@ $(function(){
     $(this).find('.sbjProfCard__info__bottom').append(spanTag);
   });
   
+  //category classification 'other' pattern
+  $('#other').each(function(){
+    var categoryEachArr = $('.categoryBlock__list--each--span').map(function(index, element){
+    return element.innerHTML;
+    });
+    $(this).find('.sbjProfCard__info__bottom--category').each(function(){
+      var smallCat = $(this).text();
+      var categoryUnMatch = $.inArray(smallCat, categoryEachArr);
+      if(categoryUnMatch === -1){
+        var otherCategroyTag = '<div class="sbjProfCard__info__bottom--category" style="display:none"><span>その他</span></div>';
+        $(this).parents('.sbjProfCard__info__bottom').append(otherCategroyTag);
+      }
+    });
+  });
    //category classification2 
   $('.listLine__cardBlock--each').each(function(){
     var bigCat = $(this).find('.js-bigCat-span').val();
@@ -101,6 +115,16 @@ $(function(){
       $(this).remove();
     }
   });
+  //category classification hidden pattern
+  $('.listLine').each(function(){
+    var cardLength = $(this).find('.listLine__cardBlock--each').length;
+    if(cardLength == 0){
+      $(this).find('.listLine__cardBlock').html('<div class="sbjProfCard--unregistered"><span style="color:#707070">表示できるものがありません。</span></div>');
+      $(this).children('.listLine__categoryTtl').css('background-color','#b2c7d9');
+    }
+  });
+  
+  
   
   //questionnaire
   $(function(){
@@ -175,6 +199,26 @@ $(function(){
   //         }
   //     }
   // }, 10);
+
+  
+  //senni
+  $('.sbjProfCard-class-js').on('click', function(){
+    var classID = $(this).data('classid');
+    window.location.href = "/users/studentsClass_show/"+classID;
+  });
+  $('.sbjProfCard-teacher-js').on('click', function(){
+    var teacherID = $(this).data('teacherid');
+    window.location.href = "/users/studentsTeacher_show/"+teacherID;
+  });
+  
+  //students switch btn
+  $('.switchBlockPC__btn--left').on('click', function(){
+    window.location.href = "/users/studentsClass/";
+  });
+  $('.switchBlockPC__btn--right').on('click', function(){
+    window.location.href = "/users/studentsTeacher/";
+  });
+  
 });
 
 

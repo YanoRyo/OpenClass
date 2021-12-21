@@ -510,14 +510,24 @@ body {
 }
 
 .searchBlock {
+  margin-left: 5px;
+  border-radius: 0 0 15px 15px;
+  padding: 0px 20px;
+  box-shadow: 3px 2px 12px 2px rgba(53, 53, 58, 0.3);
   display: none;
-  background-color: #004681;
+  background-color: #0071D0;
   position: fixed;
   top: 0;
   width: 100vw;
   height: 52px;
   z-index: 10;
   transition: 0.4s;
+}
+
+.searchBlock img {
+  width: 140px;
+  height: auto;
+  margin-top: 8px;
 }
 
 .searchBlock--hide {
@@ -528,7 +538,6 @@ body {
 .switchBlock {
   display: none;
   width: 100vw;
-  background-color: #FFF;
   position: fixed;
   bottom: 0px;
   height: 100px;
@@ -646,6 +655,7 @@ body {
 .mainBlock {
   padding-top: 40px;
   overflow-y: scroll;
+  padding-bottom: 90px;
 }
 
 .mainBlock .listLine {
@@ -839,7 +849,6 @@ body {
 .switchBlockPC__btn--left {
   padding-left: 30px;
   border-radius: 15px 0 0 15px;
-  background-color: #004681;
 }
 
 .switchBlockPC__btn--right {
@@ -848,6 +857,10 @@ body {
 }
 
 .switchBlockPC__btn:hover {
+  background-color: #004681;
+}
+
+.switchBlockPC__btn--active {
   background-color: #004681;
 }
 
@@ -907,6 +920,15 @@ body {
   top: 60%;
 }
 
+.sbjProfCard--unregistered {
+  height: 187px;
+}
+
+.sbjProfCard--unregistered span {
+  display: inline-block;
+  margin-top: 60px;
+}
+
 #ClassProf-detail {
   width: 740px;
   margin: 0 auto;
@@ -929,6 +951,8 @@ body {
   border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .detail__infoPC--data--ttl {
@@ -987,7 +1011,7 @@ body {
 
 .detail__infoPC--data--category span {
   background-color: #FFF;
-  padding: 4px 7px;
+  padding: 0px 4px;
   border: solid 1px #4472A7;
   border-radius: 4px;
   font-size: 14px;
@@ -1017,17 +1041,19 @@ body {
 
 .detail__infoSP--img {
   margin: 15px auto;
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   border-radius: 10px;
 }
 
 .detail__infoSP--img img {
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .detail__infoSP--ttl {
@@ -1081,17 +1107,20 @@ body {
 }
 
 .detail__infoSP--category {
-  margin-bottom: 15px;
+  margin-bottom: 2px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .detail__infoSP--category span {
   background-color: #FFF;
-  padding: 4px 7px;
+  padding: 4px 4px;
   border: solid 1px #4472A7;
   border-radius: 4px;
   font-size: 14px;
   color: #707070;
   margin-right: 13px;
+  margin-bottom: 13px;
 }
 
 .detail__infoSP--inCharge span {
@@ -1109,6 +1138,145 @@ body {
   color: #61819D;
 }
 
+.detail__value {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.detail__value span {
+  color: #707070;
+}
+
+.detail__value li {
+  color: #707070;
+}
+
+.detail__value--top {
+  font-weight: bold;
+  margin-bottom: 12px;
+  margin-left: 20px;
+}
+
+.detail__value--graph {
+  display: flex;
+}
+
+.detail__value--graph--pentagon {
+  width: 270px;
+  background-color: #EDEDED;
+  margin-right: 13px;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.detail__value--graph--question {
+  background-color: #EDEDED;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.detail__value--graph--question ol {
+  padding-left: 20px;
+}
+
+.detail__value--graph--question ol li {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.detail__value--graph--question span {
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.detail__value--graph--question .easy-mark {
+  display: flex;
+}
+
+.detail__value--graph--question .easy-mark .mark {
+  margin-right: 10px;
+  text-align: center;
+  line-height: 20px;
+  background-color: #4472A7;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.detail__value--graph--question .easy-mark .mark span {
+  color: #FFF;
+  font-size: 14px;
+  margin-right: 1px;
+}
+
+.detail__value--comment {
+  background-color: #EDEDED;
+  border-radius: 15px;
+  margin-top: 13px;
+  padding: 15px;
+}
+
+.detail__value--comment span {
+  font-weight: bold;
+}
+
+.detail__value--comment--list {
+  margin-top: 12px;
+}
+
+.detail__value--comment--list ul {
+  padding-left: 20px;
+}
+
+.detail__value--comment--list li {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.detail__about {
+  background-color: #EDEDED;
+  border-radius: 15px;
+  margin-top: 13px;
+  padding: 15px;
+}
+
+.detail__about--ttl span {
+  font-weight: bold;
+  color: #707070;
+}
+
+.detail__about--message {
+  margin-top: 12px;
+}
+
+.detail__about--message span {
+  color: #707070;
+}
+
+.detail__classInCharge {
+  background-color: #EDEDED;
+  border-radius: 15px;
+  margin-top: 13px;
+  padding: 15px;
+}
+
+.detail__classInCharge--ttl span {
+  font-weight: bold;
+  color: #707070;
+}
+
+.detail__classInCharge--sbj {
+  margin-top: 12px;
+}
+
+.detail__classInCharge--sbj .detail__infoPC--data--ttl {
+  cursor: pointer;
+}
+
+.detail__classInCharge--sbj .detail__infoPC--data--ttl--name span {
+  font-size: 16px;
+}
+
 @media screen and (max-width: 599px) {
   #ClassProf-detail {
     width: auto;
@@ -1122,6 +1290,20 @@ body {
 
   .detail__infoSP {
     display: block;
+  }
+
+  .detail__value--graph {
+    display: block;
+  }
+
+  .detail__value--graph--pentagon {
+    width: auto;
+    margin: 0;
+    margin-bottom: 13px;
+  }
+
+  .detail__infoSP--category {
+    justify-content: center;
   }
 }
 

@@ -1,0 +1,1 @@
+console.log('test form js/org-test.js.');

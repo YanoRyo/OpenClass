@@ -2,7 +2,7 @@
 
 @section('content')
 @foreach($classes as $class)
-<div class="updateForm">
+<div class="updateForm" style="right:0">
         <div class="updateForm__head">
           <div class="updateForm__head__ttl">
             <div class="updateForm__head__ttl--logo">
@@ -34,17 +34,17 @@
             @csrf
             <div class="updateForm__edit--flex">
               <div class="updateForm__edit--tmp updateForm__edit--flex--left">
-                <label for="classID">Class ID</label>
-                <input class="updateForm__edit--input" type="text" id="classID" name="class_num" value="{{old('class_num',$class->class_num)}}">
+                <label for="classID">Class ID  <span class="form-required">*必須</span></label>
+                <input class="updateForm__edit--input addNewForm__edit--input--ID" type="text" id="classID" name="class_num" value="{{old('class_num',$class->class_num)}}">
               </div>
               <div class="updateForm__edit--tmp updateForm__edit--flex--right">
-                <label for="subject">Subject</label>
-                <input class="updateForm__edit--input" type="text" id="subject" name="class_name" value="{{old('class_name',$class->class_name)}}">
+                <label for="subject">Subject  <span class="form-required">*必須</span></label>
+                <input class="updateForm__edit--input addNewForm__edit--input addNewForm__edit--input--name" type="text" id="subject" name="class_name" value="{{old('class_name',$class->class_name)}}">
               </div>
             </div>
             <div class="updateForm__edit--tmp">
-              <label for="instractor">Instractor</label>
-              <input class="addNewForm__edit--input" type="text" list="teacherList" id="teacher-name" id="instractor" name="teacher_id" placeholder="Select Instractor.">
+              <label for="instractor">Instractor  <span class="form-required">*必須</span></label>
+              <input class="addNewForm__edit--input addNewForm__edit--input--choice" type="text" list="teacherList" id="teacher-name" id="instractor" name="teacher_id" placeholder="Select Instractor.">
               <datalist id="teacherList">
                @foreach($all_teacheies as $teacher)
                   <option data-value="{{$teacher->id}}">{{$teacher->name}}</option>
@@ -53,17 +53,15 @@
               <input type="hidden" name="teacher_id" id="teacher-name-hidden">
             </div>
             <div class="updateForm__edit--tmp">
-              <label for="">Categories</label>
-              <div class="updateForm__edit--tmp--category">
-                <div class="category-btn-selectbox">
-                  @foreach($all_categories as $category)
-                    <div class="formTmp__cat__checkBox--btn--each category-btn-selectbox">
-                      <input type="checkbox" id="{{$category->id}}" name="category[]" value="{{$category->category}}">
-                      <label for="{{$category->id}}">{{$category->category}}</label>
-                    </div>
-                  @endforeach
-                  
-                </div>
+              <label for="">Categories  <span class="form-required">*必須</span></label>
+              <data class="updateForm__date--category" value="{{$class->category}}"></data>
+              <div class="updateForm__edit--tmp--category" id="prof-Category-js">
+                @foreach($all_categories as $category)
+                  <div class="category-btn-selectbox">
+                    <input type="checkbox" id="{{$category->id}}" name="teacher_category[]" value="{{$category->category}}" class="category-btn-selectbox-js">
+                    <label for="{{$category->id}}">{{$category->category}}</label>
+                  </div>
+                @endforeach
               </div>
             </div>
           </form>
@@ -89,7 +87,7 @@
               <button class="updateForm__submit--btn--cancel">Cancel</button>
             </div>
             <div class="updateForm__submit--btn">
-              <input type="submit" name="submit" form="updateForm__edit" value="Submit">
+              <input type="submit" name="submit" form="updateForm__edit" value="Submit" id="updateClass_submit" disabled>
             </div>
           </div>
         </div>

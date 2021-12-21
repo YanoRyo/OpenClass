@@ -2,7 +2,7 @@
 
 @section('content')
 	<!--アップデートフォーム-->
-      <div class="updateForm updateForm--professor">
+      <div class="updateForm updateForm--professor" style="right:0">
         <div class="updateForm__head">
           <div class="updateForm__head__ttl">
             <div class="updateForm__head__ttl--logo">
@@ -83,7 +83,7 @@
                 <button class="updateForm__submit--btn--cancel">Cancel</button>
               </div>
               <div class="updateForm__submit--btn">
-                <input type="submit" name="submit" form="updateForm__edit" value="Submit" id="updateForm_submit">
+                <input type="submit" name="submit" form="updateForm__edit" value="Submit" id="updateForm_submit" style="opacity:1;box-shadow:0px 3px 10px 0px rgba(0, 60, 111, 0.2)">
               </div>
             </div>
           </div>

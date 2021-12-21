@@ -18,4 +18,8 @@ class Lesson extends Model
     public function teachers(){
         return $this->hasMany('App\Teacher');
     }
+    
+    public function questionnaire(){
+        return $this->belongsTo('App\Questionnaire');
+    }
 }

@@ -122,9 +122,15 @@
                   <div class="list-detail-ttl">
                     <span>Image</span>
                   </div>
-                  <div class="list-detail-show">
-                    <img class="professor-image" src="{{ asset($teacher->image) }}" alt="">
-                  </div>
+                  @if($teacher->image == null)
+                      <div class="list-detail-show">
+                        <img class="professor-image" src="{{ asset('images/null_image.png') }}" alt="">
+                      </div>
+                  @else
+                    <div class="list-detail-show">
+                      <img class="professor-image" src="{{ asset($teacher->image) }}" alt="">
+                    </div>
+                  @endif
                 </div>
                 <div class="mgmtList__main__list--detail--tmp">
                   <div class="list-detail-ttl">

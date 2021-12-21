@@ -9,6 +9,7 @@ use App\Category;
 use App\Questionnaire;
 
 
+
 class StudentController extends Controller
 {
     /**
@@ -47,7 +48,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store4(Request $request)
+    public function store4(Request $request, $id) 
     {
         //
         $questionnaire = new Questionnaire;
@@ -58,9 +59,10 @@ class StudentController extends Controller
         $questionnaire->que_4 = $request->que_4;
         $questionnaire->que_5 = $request->que_5;
         $questionnaire->if_text1 = $request->if_text1;
-        $questionnaire->if_text1 = $request->if_text1;
+        $questionnaire->if_text2 = $request->if_text2;
         $questionnaire->better_text = $request->better_text;
         $questionnaire->comment = $request->comment;
+        $questionnaire->class_id = $id;
         
         $questionnaire->save();
         
@@ -87,10 +89,14 @@ class StudentController extends Controller
         $categories = Category::all();
         $teacheies = Teacher::all();
         
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
+                    
+        $datas = Questionnaire::all();
+        
+        // dd($classes);
   
-        return view('V2studentsClass',compact('categories','teacheies','classes'));
+        return view('users.studentsClass',compact('categories','teacheies','classes','datas'));
     }
     
     public function list_teacher()
@@ -98,13 +104,14 @@ class StudentController extends Controller
         //
         $categories = Category::all();
     	$teacheies = Teacher::all();
+    	$datas = Questionnaire::all();
     	
-    	return view('V2studentsTeacher',compact('categories','teacheies'));
+    	return view('users.studentsTeacher',compact('categories','teacheies','datas'));
     }
     
     public function show_class($id){
         
-        $classes =  Teacher::select()->join('classes','classes.teacher_id','=','teachers.id')
+        $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
         
         $classes = $classes->where('id',$id);
@@ -113,19 +120,40 @@ class StudentController extends Controller
             $categories = explode(",", $categorys);
         }
        
+        $data = Questionnaire::all();
         
+        $datas = $data->where('class_id',$id);
+        // dd($datas);
         
-        return view('V2studentsClass_show',compact('classes','categories'));
+        return view('users.studentsClass_show',compact('classes','categories','datas'));
     }
     
     public function show_teacher($id)
     {
         $show_teacher = Teacher::find($id);
+        
         $categorys = $show_teacher->teacher_category;
         $teacheies_category = explode(",", $categorys);
         $teacher_id = $show_teacher->id;
         $teacher_classes= Lesson::where('teacher_id',$teacher_id)->get();
-        return view('V2studentsTeacher_show',compact('show_teacher','teacheies_category','teacher_classes'));
+        
+        
+        foreach($teacher_classes as $teacher_class){
+            $teacherclass_id = $teacher_class->id;
+            
+        }
+       
+        $data = Questionnaire::all();
+        if(empty($teacherclass_id)){
+             $class_name = "担当授業は今の所ございません";
+             return view('users.studentsTeacher_show',compact('show_teacher','teacheies_category','teacher_classes','class_name'));
+        }else{
+            $datas = $data->where('class_id',$teacherclass_id);
+            return view('users.studentsTeacher_show',compact('show_teacher','teacheies_category','teacher_classes','datas'));
+        }
+        
+        
+        // return view('users.studentsTeacher_show',compact('show_teacher','teacheies_category','teacher_classes','datas','class_name'));
     }
 
 

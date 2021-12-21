@@ -131,11 +131,37 @@
                       <span>Evaluation</span>
                     </div>
                     <div class="list-detail-show">
-                      <span class="txt-span">4.4</span>
+                      <span class="txt-span evaluation-js">--</span>
                     </div>
                   </div>
-                  <div class="mgmtList__main__list--detail--graphTmp">
-  
+                  <div class="mgmtList__main__list--detail--graphTmp"> 
+                  <div class="canvas" data-classid="{{$class->id}}"> 
+                    <canvas id="myRaderChart{{$class->id}}" style="width:350px; height:250px;"></canvas>
+                    <div class="data-average" hidden>
+                      @foreach($datas as $data)
+                      @if($data->class_id == $class->id)
+                      <div class="data-average-each">
+                        <span class="data-average-each-1">{{$data->que_1}}</span>
+                        <span class="data-average-each-2">{{$data->que_2}}</span>
+                        <span class="data-average-each-3">{{$data->que_3}}</span>
+                        <span class="data-average-each-4">{{$data->que_4}}</span>
+                        <span class="data-average-each-5">{{$data->que_5}}</span>
+                      </div>
+                      {{$data->comment}}
+                      @endif
+                      @endforeach
+                    </div>
+                    <div class="canvas__ques">
+                      <ol>
+                        <span>Question</span>
+                        <li>この授業を誰かに勧めたいと思いますか？</li>
+                        <li>「授業の内容」と「シラバスの内容」は概ね一致していましたか？</li>
+                        <li>この授業を行なっている教員と授業をするのは楽しいですか？</li>
+                        <li>この授業は簡単でしたか？</li>
+                        <li>この授業のペースは他の授業のペースに比べてちょうどよかったですか？</li>
+                      </ol>
+                    </div>
+                  </div>
                   </div>
                   <div class="flex">
                     <div class="mgmtList__main__list--detail--tmp">
@@ -143,35 +169,59 @@
                         <span>Number of questionnaires</span>
                       </div>
                       <div class="list-detail-show">
-                        <span class="txt-span">312</span>
+                        <span class="txt-span numOfQueAbout">--</span>
                       </div>
                     </div>
                     <div class="mgmtList__main__list--detail--tmp">
                       <div class="list-detail-ttl">
                         <span>Number of comments</span>
                       </div>
-                      <div class="list-detail-show">
-                        <span class="txt-span">113</span>
+                      <div class="list-detail-show numOfComment-js">
+                        <span class="txt-span">--</span>
+                        <div hidden>
+                        @foreach($datas as $data)
+                        @if($data->class_id == $class->id)
+                          @if($data->if_text1 == null or $data->if_text2 == null)
+                          @else
+                          <span class="comment-js">{{$data->if_text1}}なところを直せば、{{$data->if_text2}}と思う...。</span><br>
+                          @endif
+                          @if($data->better_text == null)
+                          @else
+                          <span class="comment-js">{{$data->better_text}}は他の授業よりも最高！</span><br>
+                          @endif
+                          @if($data->comment == null)
+                          @else
+                          <span class="comment-js">{{$data->comment}}</span><br>
+                          @endif
+                        @endif
+                        @endforeach
+                        </div>
                       </div>
                     </div>
+                    
                   </div>
+                  
                 </div>
               </div><!--class詳細-->
+                      
               
           
             </div><!--各list-->
             @endif
             @endforeach
+                    
           
           <div class="mgmtList--underSpace"></div>
         </div>
       </div><!--mgmtList-->
 
+      
 
         @include('org.addClass')
            
        @include('org.management_filter')
       
     </div>
+    
     
 @endsection

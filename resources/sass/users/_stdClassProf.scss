@@ -70,6 +70,7 @@
 .mainBlock{
   padding-top: 40px;
   overflow-y: scroll;
+  padding-bottom: 90px;
   .listLine{
     margin-bottom: 25px;
     &__categoryTtl{
@@ -235,13 +236,15 @@
     &--left{
       padding-left: 30px;
       border-radius: 15px 0 0 15px;
-      background-color: $bg-color-5;
     }
     &--right{
       padding-right: 30px;
       border-radius: 0 15px 15px 0px;
     }
     &:hover{
+      background-color: $bg-color-5;
+    }
+    &--active{
       background-color: $bg-color-5;
     }
   }
@@ -298,4 +301,12 @@
   background: $bg-color-4;
   position: absolute;
   top: 60%;
+}
+
+.sbjProfCard--unregistered{
+  height: 187px;
+  span{
+    display: inline-block;
+    margin-top: 60px;
+  }
 }

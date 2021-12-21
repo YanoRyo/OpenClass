@@ -7,15 +7,17 @@
 <link href="{{ asset('css/usersMaster.css') }}" rel="stylesheet">
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <!--<script src="node_modules/chartjs/dist/Chart.js"></script>-->
+
+
 </head>
 <body>
-  
-  <div id="loadingBg"></div>
-  <div id="loading">
-      <div id="percent"><span id="percent-text">0</span>％</div>
-      <div id="gauge"></div>
-  </div>
+  <!--<div id="loadingBg"></div>-->
+  <!--<div id="loading">-->
+  <!--    <div id="percent"><span id="percent-text">0</span>％</div>-->
+  <!--    <div id="gauge"></div>-->
+  <!--</div>-->
   
   <div class="StdTemp">
     <div class="headerBlock">
@@ -39,9 +41,12 @@
       <div class="categoryBlock__list">
         @foreach($categories as $all_category)
         <div class="categoryBlock__list--each" data-categoryID="{{$all_category->category}}">
-          <span>{{$all_category->category}}</span>
+          <span class="categoryBlock__list--each--span">{{$all_category->category}}</span>
         </div>
         @endforeach
+        <div class="categoryBlock__list--each" data-categoryid="other">
+          <span class="categoryBlock__list--each--span">未登録カテゴリー</span>
+        </div>
       </div>
     </div>
     <div class="mainBlock">
@@ -55,15 +60,30 @@
           @foreach($classes as $class)
           <div class="listLine__cardBlock--each">
             <data class="js-bigCat-span" value="{{$all_category->category}}"></data>
-            <div class="sbjProfCard">
+            <div class="sbjProfCard sbjProfCard-class-js" data-classid="{{$class->id}}">
               <div class="sbjProfCard__profImage">
-                <img src="/images/users/profImage.png" alt=""><!--未完成-->
+                @if($class->image == null)
+                <img src="{{ asset('images/null_image.png') }}" alt="">
+                @else
+                <img src="{{ asset($class->image) }}" alt="">
+                @endif
               </div>
               <div class="sbjProfCard__info">
                 <div class="sbjProfCard__info__top">
                   <div class="sbjProfCard__info__top--val">
                     <div class="sbjProfCard__info__top--val--pentagon">
-                      <span>4.4</span><!--未完成-->
+                      @foreach($datas as $data)
+                      @if($data->class_id == $class->id)
+                      <div class="data-average-each" hidden>
+                        <span class="data-average-each-1">{{$data->que_1}}</span>
+                        <span class="data-average-each-2">{{$data->que_2}}</span>
+                        <span class="data-average-each-3">{{$data->que_3}}</span>
+                        <span class="data-average-each-4">{{$data->que_4}}</span>
+                        <span class="data-average-each-5">{{$data->que_5}}</span>
+                      </div>
+                      @endif
+                      @endforeach
+                      <span class="evaluation-js evaluation-js-users">ー</span><!--未完成-->
                     </div>
                   </div>
                   <div class="sbjProfCard__info__top--name">
@@ -71,7 +91,7 @@
                   </div>
                 </div>
                 <div class="sbjProfCard__info__bottom">
-                  <data class="js-category-span" value="{{$class->category}}" data-categorytype="1"></data><!--授業のカテゴリができてないから表示されない-->
+                  <data class="js-category-span" value="{{$class->category}}" data-categorytype="0"></data>
                 </div>
               </div>
             </div>
@@ -80,9 +100,62 @@
         </div>
       </div>
       @endforeach
+      <div class="listLine" id="other">
+        <div class="listLine__categoryTtl">
+          <span>未登録カテゴリー</span>
+        </div>
+        <div class="listLine__cardBlock">
+          @foreach($classes as $class)
+          <div class="listLine__cardBlock--each">
+            <data class="js-bigCat-span" value="その他"></data>
+            <div class="sbjProfCard sbjProfCard-class-js" data-classid="{{$class->id}}">
+              <div class="sbjProfCard__profImage">
+                @if($class->image == null)
+                <img src="{{ asset('images/null_image.png') }}" alt="">
+                @else
+                <img src="{{ asset($class->image) }}" alt="">
+                @endif
+              </div>
+              <div class="sbjProfCard__info">
+                <div class="sbjProfCard__info__top">
+                  <div class="sbjProfCard__info__top--val">
+                    <div class="sbjProfCard__info__top--val--pentagon">
+                      @foreach($datas as $data)
+                      @if($data->class_id == $class->id)
+                      <div class="data-average-each" hidden>
+                        <span class="data-average-each-1">{{$data->que_1}}</span>
+                        <span class="data-average-each-2">{{$data->que_2}}</span>
+                        <span class="data-average-each-3">{{$data->que_3}}</span>
+                        <span class="data-average-each-4">{{$data->que_4}}</span>
+                        <span class="data-average-each-5">{{$data->que_5}}</span>
+                      </div>
+                      @endif
+                      @endforeach
+                      <span class="evaluation-js evaluation-js-users">ー</span><!--未完成-->
+                    </div>
+                  </div>
+                  <div class="sbjProfCard__info__top--name">
+                    <span>{{$class->class_name}}</span>
+                  </div>
+                </div>
+                <div class="sbjProfCard__info__bottom">
+                  <data class="js-category-span" value="{{$class->category}}" data-categorytype="0"></data>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
     </div>
+    
     <div class="rankBlock">
       <!-- PC　ランキング部分 -->
+    </div>
+    
+    @include('users.students_switch')
+    <div class="searchBlock">
+          <img src="/images/users/openclassLogo.png" alt="">
     </div>
   </div>
 </body>
@@ -101,6 +174,7 @@
           <!--  <p>{{$class->class_name}}</p>-->
           <!--  <p>{{$class->email}}</p>-->
           <!--  <p>{{$class->category}}</p>-->
-          <!--  <a href="{{ route('class.studentsClass_show',['id' => $class->id])}}">授業show</a>-->
+          <!--  <p>{{$class->id}}</p>-->
+          <!--  <a href="{{ route('users.studentsClass_show',['id' => $class->id])}}">授業show</a>-->
           <!--@endif-->
           <!--@endforeach-->

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Lesson;
 use App\Teacher;
 use App\Category;
+use App\Questionnaire;
 //useしないと 自動的にnamespaceのパスが付与されるのでuse
 use SplFileObject;
 
@@ -34,8 +35,8 @@ class ClassController extends Controller
         
         $classes =  Teacher::select()->join('lessons','lessons.teacher_id','=','teachers.id')
                     ->get();
-                    
-        
+       
+        // dd($classes);
         // $classes = $classes->where('id',$id);
         // foreach($classes as $class){
         //     $class_id = $class->id;
@@ -45,8 +46,65 @@ class ClassController extends Controller
         //     $categories = explode(",", $categorys);
         // }
         // dd($categories);
+        $datas = Questionnaire::all();
+        // $datas = Lesson::select()->join('quetionnaires','quetionnaires.class_id','=','lessons.id')->get();
+        // $datas = Questionnaire::select()->join('lessons','lessons.id','=','questionnaires.class_id');
+        // $datas =  Teacher::select()->join('questionnaires','questionnaires.class_id','=','teachers.id')
+        //             ->get();quetionnaires
+        // dd($datas);
         
-        return view('org.class',compact('categories','teacheies','classes'));
+        // $arrays_data01 = array();
+        // $arrays_data02 = array();
+        // $arrays_data03 = array();
+        // $arrays_data04 = array();
+        // $arrays_data05 = array();
+        // foreach($datas as $data){
+        //     // print($data->que_2);
+        //     // foreach($classes as $class){
+        //     //     if($data->class_id == $class->id){
+        //     //         array_push($arrays_data01,$data->que_1);
+        //     //         dd($arrays_data01);
+        //     //     }
+        //     // }
+        //     // // print($data);
+            
+        //     // array_push($arrays_data02,$data->que_2);
+        //     // array_push($arrays_data03,$data->que_3);
+        //     // array_push($arrays_data04,$data->que_4);
+        //     // array_push($arrays_data05,$data->que_5);
+        //     // dd($arrays_data);
+            
+        //     // dd($total01);
+        // }
+        
+        // // dd($arrays_data04);
+        //     $count01 = count($arrays_data01,COUNT_RECURSIVE);
+        //     $count02 = count($arrays_data02,COUNT_RECURSIVE);
+        //     $count03 = count($arrays_data03,COUNT_RECURSIVE);
+        //     $count04 = count($arrays_data04,COUNT_RECURSIVE);
+        //     $count05 = count($arrays_data05,COUNT_RECURSIVE);
+        //     $sum01 = array_sum($arrays_data01);
+        //     $sum02 = array_sum($arrays_data02);
+        //     $sum03 = array_sum($arrays_data03);
+        //     $sum04 = array_sum($arrays_data04);
+        //     $sum05 = array_sum($arrays_data05);
+            
+        //     $total01 = $sum01/$count01;
+        //     $total02 = $sum02/$count02;
+        //     $total03 = $sum03/$count03;
+        //     $total04 = $sum04/$count04;
+        //     $total05 = $sum05/$count05;
+            
+        //     $value = round(($total01+$total02+$total03+$total04+$total05)/5,1);
+        // dd($total01);
+        // $arrays_data = array();
+        // foreach($datas as $data){
+        //     array_push($arrays_data,$data->que_1);
+            
+        // }
+        // dd($arrays_data);
+        
+        return view('org.class',compact('categories','teacheies','classes','datas'));
     }
 
     /**
@@ -79,6 +137,7 @@ class ClassController extends Controller
         }
         // dd($arrays_teacher);
         $search_string = $request->teacher_id;
+        
         if(in_array($search_string,$arrays_teacher)){
             $class->teacher_id = $search_string;
         }elseif(is_string($search_string)){
@@ -169,18 +228,18 @@ class ClassController extends Controller
         //
         // dd($request);
         $class = Lesson::find($id);
-        // ==========ここから追加する==========
-            $validatedData = $request->validate([
-                'class_name' => 'required|max:255',
-                'class_num' => 'required',
-                'category' => 'required',
-                'teacher_id' => 'required',
-                // 'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+        // // ==========ここから追加する==========
+        //     $validatedData = $request->validate([
+        //         'class_name' => 'required|max:255',
+        //         'class_num' => 'required',
+        //         'category' => 'required',
+        //         'teacher_id' => 'required',
+        //         // 'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     ]);
         // ==========ここまで追加する==========
         $class->class_name = $request->class_name;
         $class->class_num = $request->class_num;
-        $array = $request->category;
+        $array = $request->teacher_category;
         $class->category = implode( ',', $array);
         $class->teacher_id = $request->teacher_id;
         $class->save();
@@ -344,6 +403,65 @@ class ClassController extends Controller
        
         return view('org.searchAll',compact('classes'));
         
+    }
+    
+    public function pull_data(){
+        
+        // $datas =  Questionnaire::select()->join('lessons','lessons.teacher_id','=','questionnaires.class_id')
+        //             ->get();
+                    
+        // dd($classes);
+        
+        // $datas = Questionnaire::all();
+        
+        // foreach($datas as $data){
+            
+        // }
+                    
+        $questionnaire01 = Questionnaire::select('que_1')->join('lessons','lessons.teacher_id','=','questionnaires.class_id')->get();
+        $questionnaire02 = Questionnaire::select('que_2')->join('lessons','lessons.teacher_id','=','questionnaires.class_id')->get();
+        $questionnaire03 = Questionnaire::select('que_3')->join('lessons','lessons.teacher_id','=','questionnaires.class_id')->get();
+        $questionnaire04 = Questionnaire::select('que_4')->join('lessons','lessons.teacher_id','=','questionnaires.class_id')->get();
+        $questionnaire05 = Questionnaire::select('que_5')->join('lessons','lessons.teacher_id','=','questionnaires.class_id')->get();
+        
+        $data01 = $questionnaire01->count();
+        $data02 = $questionnaire02->count();
+        $data03 = $questionnaire03->count();
+        $data04 = $questionnaire04->count();
+        $data05 = $questionnaire05->count();
+        
+        
+        $questionnaire1 = Questionnaire::sum('que_1');
+        $questionnaire2 = Questionnaire::sum('que_2');
+        $questionnaire3 = Questionnaire::sum('que_3');
+        $questionnaire4 = Questionnaire::sum('que_4');
+        $questionnaire5 = Questionnaire::sum('que_5');
+        
+        $que01_num = $questionnaire1/$data01;
+        $que02_num = $questionnaire2/$data02;
+        $que03_num = $questionnaire3/$data03;
+        $que04_num = $questionnaire4/$data04;
+        $que05_num = $questionnaire5/$data05;
+        
+        dd($que01_num);
+        
+    
+        
+        // foreach($questionnaires as $questionnaire){
+            
+        //     $array[] = $questionnaire->que_1;
+            
+        //     $sum_num = $array->sum();
+        // }
+        // dd($array->sum());
+        
+        // $count_data = $questionnaires->que_1;
+        
+        // $count_datas = $count_data->count();
+        
+        // dd($count_datas);
+    	
+    	return view('org.class',compact('que01_num','que02_num','que03_num','que04_num','que05_num'));
     }
     
     // protected $lesson = null;

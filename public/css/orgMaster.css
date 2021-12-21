@@ -764,6 +764,7 @@ main {
   grid-area: list;
   padding: 10px 0 9px 0;
   display: flex;
+  z-index: 1000;
 }
 
 .managementWrapper .mgmtList__main__list--child--cont {
@@ -916,7 +917,6 @@ main {
 .managementWrapper .mgmtList__main__list--detail--graphTmp {
   width: 350px;
   height: 250px;
-  background-color: #61819D;
   border-radius: 15px;
   margin-top: 20px;
 }
@@ -962,7 +962,7 @@ main {
   height: 584px;
   border-radius: 15px;
   filter: drop-shadow(-2px 3px 10px rgba(97, 129, 157, 0.3));
-  z-index: 10;
+  z-index: 10000;
   transition: 0.5s;
   /* &--professor{
     overflow-y: scroll;
@@ -1279,5 +1279,63 @@ main {
 
 .add_submit_active {
   opacity: 1;
+}
+
+.mgmtList__main__list--detail--graphTmp {
+  width: 350px;
+  height: 250px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas {
+  overflow: hidden;
+  width: 350px;
+  height: 250px;
+  position: relative;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas:hover {
+  overflow: visible;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas:hover .canvas__ques {
+  display: block;
+  opacity: 1;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas__ques {
+  box-shadow: 0px 3px 10px 0px rgba(0, 60, 111, 0.2);
+  z-index: 10;
+  position: absolute;
+  right: 350px;
+  top: 0;
+  width: 350px;
+  padding: 10px 15px;
+  height: auto;
+  border-radius: 20px;
+  background-color: #61819D;
+  opacity: 0;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas__ques ol {
+  padding-left: 15px;
+  margin: 0;
+  color: #FFF;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas__ques li {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.mgmtList__main__list--detail--graphTmp .canvas__ques:before {
+  position: absolute;
+  top: 50px;
+  left: 350px;
+  content: "";
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #61819D;
 }
 

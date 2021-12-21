@@ -14,4 +14,8 @@ class Questionnaire extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+    
+    public function lessons(){
+        return $this->hasMany('App\Lesson');
+    }
 }

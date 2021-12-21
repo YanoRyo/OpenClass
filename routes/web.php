@@ -49,6 +49,7 @@ Route::group(['prefix'=>'org','middleware'=>'auth'],function(){
 	Route::post('/archive1/cancel/{id}','ClassController@archive_cancel');
 	Route::post('/import', 'ClassController@import')->name('org.class');
 	Route::get('/searchClass','ClassController@search_class')->name('org.searchClass');
+
 	// Teacher
 	Route::get('/teacher','TeacherController@index')->name('org.teacher');
 	Route::post('/addTeacher/store2','TeacherController@store2')->name('org.store2');
@@ -75,7 +76,7 @@ Route::group(['prefix'=>'users'],function(){
 	Route::get('/studentsTeacher','StudentController@list_teacher')->name('users.studentsTeacher');
 	Route::get('/studentsTeacher_show/{id}','StudentController@show_teacher')->name('users.studentsTeacher_show');
 	Route::get('/questionnaire/{id}','StudentController@questionnaire')->name('users.questionnaire');
-	Route::post('/store4','StudentController@store4')->name('users.store4');
+	Route::post('/store4/{id}','StudentController@store4')->name('users.store4');
 	Route::get('/questionnaire-thanks','StudentController@show_thanks')->name('users.questionnaire-thanks');
 
 

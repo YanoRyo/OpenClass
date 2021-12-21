@@ -247,6 +247,7 @@
           grid-area: list;
           padding: 10px 0 9px 0;
           display: flex;
+          z-index: 1000;
           &--cont{
             padding: 6px 16px;
             span{
@@ -384,7 +385,6 @@
           &--graphTmp{
             width: 350px;
             height: 250px;
-            background-color: $bg-color-3;
             border-radius: 15px;
             margin-top: 20px;
           }
@@ -428,7 +428,7 @@
   //top: 230px;
   //sbox-shadow: -2px 3px 15px 0px rgba(97, 129, 157, 0.3);
   filter: drop-shadow(-2px 3px 10px rgba(97, 129, 157, 0.3));
-  z-index: 10;
+  z-index: 10000;
   //right: -900px;
   transition: .5s;
   &__head{

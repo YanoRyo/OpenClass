@@ -36,7 +36,12 @@ class CategoryController extends Controller
        
         $result = array_search($search_category, $arrays_category);
         // dd($result);
-        if($search_category == $arrays_category[0]){
+        if(empty($arrays_category)){
+            $new_category->category = $search_category;
+            $new_category->save();
+            return redirect('org/category');
+        }
+        elseif($search_category == $arrays_category[0]){
            
            
             $alert_category = "そのカテゴリはすでに追加されています";

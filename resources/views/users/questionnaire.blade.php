@@ -47,22 +47,23 @@
             <span>{{$class->class_name}}</span>
           </div>
           <div class="quesWrap__top--info--name--prof">
-            <span>{{$class->name}}</span>
+            <span>{{$class->class_name}}</span>
           </div>
         </div>
       </div>
       @endforeach
       <div class="quesWrap__top--message">
         <span>
-          授業お疲れ様でした〜！<br>
-          97秒くらいのアンケートです！　答えられるところだけ答えてください！<br>
+          授業お疲れ様でした！<br>
+          97秒くらいのアンケートで、完全匿名です！　<br>
+          回答は全て自由項目ですので、答えられるところだけ答えてください！<br>
           ではよろしくお願いします！
         </span>
       </div>
     </div>
-    
+    @foreach($classes as $class)
     <div class="quesWrap__ques">
-      <form method="POST" action="{{route ('users.store4') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{route ('users.store4',['id' => $class->id]) }}" enctype="multipart/form-data">
       @csrf
         <div class="quesWrap__ques--each">
           <div class="quesWrap__ques--each--bar"></div> 
@@ -1338,11 +1339,13 @@
             </div>
           </div>
         </div>
+        
         <div class="quesWrap__ques--each">
           <div class="quesWrap__ques--each--bar"></div> 
           <div class="quesWrap__ques--each--num">
             <span>Q8,</span>
           </div> 
+          
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
               <span>何か {{$class->name}} にコメントがあれば！</span><br>
@@ -1350,12 +1353,13 @@
             </div>
           </div>
         </div>
-
+        
         <div class="quesWrap__ques--submit">
           <input type="submit" value="Submit">
         </div>
       </form>
     </div>
+    @endforeach
   </div>
 </div>
   

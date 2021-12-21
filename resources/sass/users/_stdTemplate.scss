@@ -32,14 +32,23 @@ body{
 }
 
 .searchBlock{
+  margin-left: 5px;
+  border-radius: 0 0 15px 15px;
+  padding: 0px 20px;
+  box-shadow: 3px 2px 12px 2px rgb(53,53,58,.3);
   display: none;
-  background-color: $bg-color-5;
+  background-color: $bg-color-4;
   position: fixed;
   top: 0;
   width: 100vw;
   height: 52px;
   z-index: 10;
   transition: .4s;
+  img{
+    width:140px;
+    height:auto;
+    margin-top: 8px;
+  }
 }
 .searchBlock--hide{
   top: -52px;
@@ -48,7 +57,7 @@ body{
 .switchBlock{
   display: none;
   width: 100vw;
-  background-color: #FFF;
+  //background-color: #FFF;
   position: fixed;
   bottom: 0px;
   height: 100px;
