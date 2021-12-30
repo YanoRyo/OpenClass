@@ -50090,6 +50090,15 @@ $(function () {
   });
   $('.switchBlockPC__btn--right').on('click', function () {
     window.location.href = "/users/studentsTeacher/";
+  }); //studentsClass_show comment
+
+  $('.detail__value--comment--list').each(function () {
+    var howManyList = $(this).find('.detail__value--comment--list--each').length;
+    console.log(howManyList);
+
+    if (howManyList == 0) {
+      $(this).html('<span style="color:#707070; font-weight:normal; font-size:14px;">評価がありません。</span>');
+    }
   });
 });
 

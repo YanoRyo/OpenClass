@@ -47,7 +47,7 @@
             <span>{{$class->class_name}}</span>
           </div>
           <div class="quesWrap__top--info--name--prof">
-            <span>{{$class->class_name}}</span>
+            <span>教員: {{$class->name}} </span>
           </div>
         </div>
       </div>
@@ -1323,7 +1323,7 @@
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
               <span>あえていうなら、</span><br>
-              <input type="text" class="input-type1" name="if_text1" placeholder="例：回線が悪い"><span>なところを直せば、</span><br>
+              <input type="text" class="input-type1" name="if_text1" placeholder="例：回線が悪い"><span>ところを直せば、</span><br>
               <input type="text" class="input-type1" name="if_text2" placeholder="例：授業がもっとスムーズになる">と思う...。
             </div>
           </div>

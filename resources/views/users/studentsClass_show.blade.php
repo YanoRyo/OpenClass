@@ -176,9 +176,9 @@
               <ul>
                 @foreach($datas as $data)
                 @if($data->if_text1 == null or $data->if_text2 == null)
-                <span>評価はありません。</span>
+                
                 @else
-                <li>{{$data->if_text1}}なところを直せば{{$data->if_text2}}と思う。</li>
+                <li class="detail__value--comment--list--each">{{$data->if_text1}}ところを直せば{{$data->if_text2}}と思う。</li>
                 @endif
                 @endforeach
               </ul>
@@ -190,9 +190,9 @@
               <ul>
                 @foreach($datas as $data)
                 @if($data->better_text == null)
-                <span>評価はありません。</span>
+                
                 @else
-                <li>{{$data->better_text}}は他の授業よりも最高！</li>
+                <li class="detail__value--comment--list--each">{{$data->better_text}}は他の授業よりも最高！</li>
                 @endif
                 @endforeach
               </ul>
@@ -204,9 +204,10 @@
               <ul>
                 @foreach($datas as $data)
                 @if($data->comment == null)
-                <span>評価はありません。</span>
+                
+
                 @else
-                <li>{{$data->comment}}</li>
+                <li class="detail__value--comment--list--each">{{$data->comment}}</li>
                 @endif
                 @endforeach
               </ul>
