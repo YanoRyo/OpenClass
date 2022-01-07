@@ -1340,3 +1340,110 @@ main {
   border-left: 15px solid #61819D;
 }
 
+.container {
+  background-color: #fff;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px 0 rgba(73, 142, 199, 0.1);
+  padding: 20px;
+  margin: 60px 80px;
+}
+
+.container .card-header {
+  display: none;
+}
+
+.container .form-group {
+  margin-bottom: 10px;
+}
+
+.container .col-md-4,
+.container .col-form-label,
+.container .text-md-right {
+  font-size: 14px;
+  color: #555555;
+}
+
+.container .form-check-label {
+  font-size: 14px;
+  color: #555555;
+}
+
+.container .form-control {
+  color: #555555;
+  width: 285px;
+  height: 24px;
+  border-radius: 0 0 2px 2px;
+  border-bottom: solid 2px #BCE0FD;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 14px;
+}
+
+.container .form-control:focus {
+  outline: none;
+  border-bottom: solid 2px #2699FA;
+}
+
+.container .col-md-8 .btn-primary,
+.container .offset-md-4 .btn-primary {
+  color: #FFF;
+  display: block;
+  background-color: #0071d0;
+  padding: 10px 40px;
+  border-radius: 10px;
+  margin: 10px auto;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.container .col-md-8 .btn-primary:hover,
+.container .offset-md-4 .btn-primary:hover {
+  box-shadow: 0px 3px 10px 0px rgba(0, 60, 111, 0.2);
+  opacity: 1;
+}
+
+.container .col-md-8 .btn-link,
+.container .offset-md-4 .btn-link {
+  font-size: 14px;
+}
+
+#navbarDropdown {
+  display: none;
+}
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu-right .dropdown-item {
+  color: #FFF;
+  display: block;
+  background-color: #7FC4FC;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin: 10px auto;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu-right .dropdown-item:hover {
+  background-color: #0071d0;
+}
+
+.top-right a,
+.links a {
+  color: #FFF;
+  display: inline-block;
+  background-color: #7FC4FC;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin: 10px auto;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.top-right a:hover,
+.links a:hover {
+  background-color: #0071d0;
+}
+

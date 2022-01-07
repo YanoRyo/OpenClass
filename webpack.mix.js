@@ -21,6 +21,6 @@ mix
         'resources/js/assets/organization/org.js',
     ], 'public/js/app.js')
     // .scripts('resources/js/assets/test_vanilla.js','public/js/test_vanilla.js')
-    // .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/users/usersMaster.scss', 'public/css')
     .sass('resources/sass/organization/orgMaster.scss', 'public/css');
