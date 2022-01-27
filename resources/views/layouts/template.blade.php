@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>OpenClass</title>
+<title>OpenClass.</title>
+<link rel="icon" href="/images/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link href="{{ asset('css/orgMaster.css') }}" rel="stylesheet">
 <!-- Scripts -->
@@ -68,7 +69,7 @@
 	<nav class="gNav">
     <div class="gNav__serviceName">
       <div class="gNav__serviceName--img">
-        <img src="/images/seviceLogo.png" alt="">
+        <img src="/images/logo_university.png" alt="">
       </div>
     </div>
     <div class="gNav__list">
@@ -130,7 +131,7 @@
     <div class="gNav__list">
       <div @php
             $now_route = \Route::currentRouteName();
-            if($now_route == "org.category"){
+            if($now_route == "org.AccessManagement"){
               echo'class="gNav__list__menu gNav__list__menu--active"';
             }else{
               echo'class="gNav__list__menu"';
@@ -147,7 +148,7 @@
     <div class="gNav__list">
       <div @php
             $now_route = \Route::currentRouteName();
-            if($now_route == "org.category"){
+            if($now_route == "org.QuestionnaireSettings"){
               echo'class="gNav__list__menu gNav__list__menu--active"';
             }else{
               echo'class="gNav__list__menu"';

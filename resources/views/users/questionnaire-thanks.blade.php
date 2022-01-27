@@ -1,7 +1,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>OpenClass</title>
+<title>OpenClass.</title>
+<link rel="icon" href="/images/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link href="{{ asset('css/usersMaster.css') }}" rel="stylesheet">
 <!-- Scripts -->
@@ -14,7 +15,7 @@
 <div class="question-page">
   <div class="question__header">
     <div class="question__header--img">
-      <img src="/images/Logo_students.png" alt="">
+        <img src="/images/users/logo_questionnaire.png" alt="">
     </div>
   </div>
 

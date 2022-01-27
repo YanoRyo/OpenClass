@@ -1,7 +1,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>OpenClass</title>
+<title>OpenClass.</title>
+<link rel="icon" href="/images/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link href="{{ asset('css/usersMaster.css') }}" rel="stylesheet">
 <!-- Scripts -->
@@ -14,7 +15,7 @@
 <div class="question-page">
   <div class="question__header">
     <div class="question__header--img">
-      <img src="/images/Logo_students.png" alt="">
+        <img src="/images/users/logo_questionnaire.png" alt="">
     </div>
   </div>
 
@@ -1323,8 +1324,8 @@
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
               <span>あえていうなら、</span><br>
-              <input type="text" class="input-type1" name="if_text1" placeholder="例：回線が悪い"><span>ところを直せば、</span><br>
-              <input type="text" class="input-type1" name="if_text2" placeholder="例：授業がもっとスムーズになる">と思う...。
+              <input type="text" class="input-type1" name="if_text1" placeholder="例：回線が悪い" autocomplete="off"><span>ところを直せば、</span><br>
+              <input type="text" class="input-type1" name="if_text2" placeholder="例：授業がもっとスムーズになる" autocomplete="off">と思う...。
             </div>
           </div>
         </div>
@@ -1335,7 +1336,7 @@
           </div> 
           <div class="quesWrap__ques--each__block">
             <div class="quesWrap__ques--each__block--ques">
-              <input type="text" name="better_text"placeholder="例：授業のスムーズさ"><span>は他の授業よりも最高！</span>
+              <input type="text" name="better_text"placeholder="例：授業のスムーズさ" autocomplete="off"><span>は他の授業よりも最高！</span>
             </div>
           </div>
         </div>

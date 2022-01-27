@@ -22,21 +22,21 @@
           <!--          </ul>-->
           <!--      </div>-->
           <!--  @endif-->
-          <form class="upload-images p-0 border-0" method='POST' action="{{ route('org.store2') }}" enctype="multipart/form-data" id="addProf_form">
+          <form class="upload-images p-0 border-0" method='POST' action="{{ route('org.store2') }}" enctype="multipart/form-data" id="addProf_form" autocomplete="off">
             @csrf
             <div class="addNewForm__edit--flex">
               <div class="addNewForm__edit--tmp addNewForm__edit--flex--left" id="prof-ID-js">
                 <label for="classID">Professor ID  <span class="form-required">*必須</span></label>
-                <input class="addNewForm__edit--input addNewForm__edit--input--ID" type="text" id="classID" placeholder="Add Prof ID.">
+                <input class="addNewForm__edit--input addNewForm__edit--input--ID" type="text" id="classID" placeholder="Add Prof ID." autocomplete="off">
               </div>
               <div class="addNewForm__edit--tmp addNewForm__edit--flex--right" id="prof-Name-js">
                 <label for="subject">Professor name  <span class="form-required">*必須</span></label>
-                <input class="addNewForm__edit--input" type="text" name="name" id="subject" placeholder="Add new Proffessor name.">
+                <input class="addNewForm__edit--input" type="text" name="name" id="subject" placeholder="Add new Proffessor name." autocomplete="off">
               </div>
             </div>
             <div class="addNewForm__edit--tmp addNewForm__edit--flex--right" id="prof-Email-js">
               <label for="email">Mail  <span class="form-required">*必須</span></label>
-              <input class="addNewForm__edit--input addNewForm__edit--input--email" type="email" name="email" id="email" placeholder="Add new Mail adress.">
+              <input class="addNewForm__edit--input addNewForm__edit--input--email" type="email" name="email" id="email" placeholder="Add new Mail adress." autocomplete="off">
             </div>
             <div class="addNewForm__edit--tmp addNewForm__edit--flex--right">
               <label for="prof-image">Image</label>

@@ -22,21 +22,21 @@
                     </ul>
                 </div>
         @endif
-          <form method='POST' action="{{ route('org.store3') }}" enctype="multipart/form-data" id="addClass_form" class="addNewForm__edit">
+          <form method='POST' action="{{ route('org.store3') }}" enctype="multipart/form-data" id="addClass_form" class="addNewForm__edit" autocomplete="off">
             @csrf
             <div class="addNewForm__edit--flex">
               <div class="addNewForm__edit--tmp addNewForm__edit--flex--left">
                 <label for="classID">Class ID <span class="form-required">*必須</span></label>
-                <input class="addNewForm__edit--input addNewForm__edit--input--ID" type="text" name="class_num" id="classID" placeholder="Add Class ID.">
+                <input class="addNewForm__edit--input addNewForm__edit--input--ID" type="text" name="class_num" id="classID" placeholder="Add Class ID." autocomplete="off">
               </div>
               <div class="addNewForm__edit--tmp addNewForm__edit--flex--right">
                 <label for="subject">Subject <span class="form-required">*必須</span></label>
-                <input class="addNewForm__edit--input" type="text" name="class_name" id="subject" placeholder="Add new Subject name.">
+                <input class="addNewForm__edit--input" type="text" name="class_name" id="subject" placeholder="Add new Subject name." autocomplete="off">
               </div>
             </div>
             <div class="addNewForm__edit--tmp">
               <label for="instractor">Instractor <span class="form-required">*必須</span></label>
-              <input class="addNewForm__edit--input" type="text" list="teacherList" id="teacher-name" id="instractor" name="teacher_id" placeholder="Select Instractor.">
+              <input class="addNewForm__edit--input" type="text" list="teacherList" id="teacher-name" id="instractor" name="teacher_id" placeholder="Select Instractor." autocomplete="off">
               <datalist id="teacherList">
                 @foreach($teacheies as $teacher)
                   <option data-value="{{$teacher->id}}">{{$teacher->name}}</option>

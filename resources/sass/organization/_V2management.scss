@@ -586,6 +586,7 @@
 }
 
 .filterMW{
+  z-index: 10000;//misaki-fix-2022/01/26
   visibility: hidden;
   opacity: 0;
   width: 350px;

@@ -1213,6 +1213,7 @@ main {
 }
 
 .filterMW {
+  z-index: 10000;
   visibility: hidden;
   opacity: 0;
   width: 350px;
